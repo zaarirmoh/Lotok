@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
                     color = RedBackground
                 ) {
                     LotokNavHost()
-                    //
+                    //hello
                 }
             }
         }
