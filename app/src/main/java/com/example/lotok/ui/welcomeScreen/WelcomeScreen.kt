@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
@@ -53,10 +54,10 @@ fun WelcomeScreen(
                 painter = red_container_image,
                 contentDescription = null,
                 modifier = modifier
-                    .size(width = 375.dp, height = 498.dp)
                     .fillMaxWidth()
                     .align(Alignment.TopEnd),
-                alignment = Alignment.TopEnd
+                alignment = Alignment.TopEnd,
+                contentScale = ContentScale.FillWidth
                 //.aspectRatio(red_container_image.intrinsicSize.width / red_container_image.intrinsicSize.height)
             )
             Column(modifier = modifier.fillMaxHeight()) {
