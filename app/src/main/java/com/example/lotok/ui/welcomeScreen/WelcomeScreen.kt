@@ -6,7 +6,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -34,7 +33,9 @@ import com.example.lotok.ui.theme.LotokTheme
 
 
 @Composable
-fun WelcomeScreen() {
+fun WelcomeScreen(
+    modifier: Modifier = Modifier
+) {
     val red_container_image = painterResource(id = R.drawable.red_container)
     val red_car = painterResource(id = R.drawable.red_car)
     val text = stringResource(id = R.string.welcome_screen_text)
@@ -43,18 +44,23 @@ fun WelcomeScreen() {
     val buttonColor = Color(android.graphics.Color.parseColor("#B3261E"))
 
     Surface(color = Color.White, modifier = Modifier.fillMaxSize()) {
-        Box(modifier = Modifier.fillMaxSize()) {
+
+        Box(
+            modifier = modifier.fillMaxSize(),
+            contentAlignment = Alignment.TopCenter
+        ) {
             Image(
                 painter = red_container_image,
                 contentDescription = null,
-                modifier = Modifier
-                    .align(Alignment.TopEnd)
+                modifier = modifier
                     .size(width = 375.dp, height = 498.dp)
                     .fillMaxWidth()
-                    //.aspectRatio(red_container_image.intrinsicSize.width / red_container_image.intrinsicSize.height)
+                    .align(Alignment.TopEnd),
+                alignment = Alignment.TopEnd
+                //.aspectRatio(red_container_image.intrinsicSize.width / red_container_image.intrinsicSize.height)
             )
-            Column(modifier = Modifier.fillMaxHeight()) {
-                Spacer(modifier = Modifier.height(222.dp))
+            Column(modifier = modifier.fillMaxHeight()) {
+                Spacer(modifier = modifier.height(222.dp))
                 Image(
                     painter = red_car,
                     contentDescription = null,

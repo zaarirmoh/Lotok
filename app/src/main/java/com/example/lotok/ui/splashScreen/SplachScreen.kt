@@ -20,6 +20,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.lotok.R
 import com.example.lotok.ui.navigation.LotokScreen
 import com.example.lotok.ui.theme.RedBackground
@@ -66,5 +67,5 @@ fun SplachScreen(
 @Preview
 @Composable
 fun SplachScreenPreview(){
-
+    SplachScreen(navController = rememberNavController())
 }
