@@ -26,25 +26,8 @@ class MainActivity : ComponentActivity() {
                     color = RedBackground
                 ) {
                     LotokNavHost()
-                    //hello
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "zaarir $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    LotokTheme {
-        Greeting("Android")
     }
 }
