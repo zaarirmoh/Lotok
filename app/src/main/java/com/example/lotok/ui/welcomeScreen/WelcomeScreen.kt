@@ -49,8 +49,9 @@ fun WelcomeScreen() {
                 contentDescription = null,
                 modifier = Modifier
                     .align(Alignment.TopEnd)
+                    .size(width = 375.dp, height = 498.dp)
                     .fillMaxWidth()
-                    .aspectRatio(red_container_image.intrinsicSize.width / red_container_image.intrinsicSize.height)
+                    //.aspectRatio(red_container_image.intrinsicSize.width / red_container_image.intrinsicSize.height)
             )
             Column(modifier = Modifier.fillMaxHeight()) {
                 Spacer(modifier = Modifier.height(222.dp))
@@ -59,7 +60,7 @@ fun WelcomeScreen() {
                     contentDescription = null,
                     modifier = Modifier
                         .size(width = 386.dp, height = 241.dp)
-                        .aspectRatio(red_car.intrinsicSize.width / red_car.intrinsicSize.height)
+                        //.aspectRatio(red_car.intrinsicSize.width / red_car.intrinsicSize.height)
                 )
                 Spacer(modifier = Modifier.height(55.dp))
                 Column(modifier=Modifier.fillMaxWidth(),horizontalAlignment = Alignment.CenterHorizontally) {
