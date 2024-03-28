@@ -12,20 +12,30 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.lotok.R
+import com.example.lotok.ui.navigation.LotokScreen
 import com.example.lotok.ui.theme.RedBackground
+import kotlinx.coroutines.delay
 
 
 @Composable
 fun SplachScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    delayTime: Long = 1500L,
+    navController: NavController
 ) {
+    LaunchedEffect(key1 = true) {
+        delay(delayTime)
+        navController.navigate(LotokScreen.WelcomeScreen.name)
+    }
     Surface(
         color = RedBackground
     ) {
