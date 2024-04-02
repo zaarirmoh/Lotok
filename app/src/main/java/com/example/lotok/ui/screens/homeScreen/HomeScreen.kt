@@ -1,4 +1,4 @@
-package com.example.lotok.ui.homeScreen
+package com.example.lotok.ui.screens.homeScreen
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier

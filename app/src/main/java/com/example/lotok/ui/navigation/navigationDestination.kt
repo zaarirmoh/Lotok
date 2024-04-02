@@ -6,8 +6,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.lotok.ui.splashScreen.SplachScreen
-import com.example.lotok.ui.welcomeScreen.WelcomeScreen
+import com.example.lotok.ui.screens.splashScreen.SplachScreen
+import com.example.lotok.ui.screens.welcomeScreen.WelcomeScreen
 
 @Composable
 fun LotokNavHost(

@@ -1,4 +1,4 @@
-package com.example.lotok.ui.welcomeScreen
+package com.example.lotok.ui.screens.welcomeScreen
 
 
 
@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Surface
@@ -38,7 +39,7 @@ fun WelcomeScreen(
     modifier: Modifier = Modifier
 ) {
     val red_container_image = painterResource(id = R.drawable.red_container)
-    val red_car = painterResource(id = R.drawable.red_car)
+    val red_car = painterResource(id = R.drawable.red_car_1)
     val text = stringResource(id = R.string.welcome_screen_text)
     val button_text = stringResource(id = R.string.get_Started)
     val words = text.split(" ")
@@ -60,13 +61,13 @@ fun WelcomeScreen(
                 contentScale = ContentScale.FillWidth
                 //.aspectRatio(red_container_image.intrinsicSize.width / red_container_image.intrinsicSize.height)
             )
-            Column(modifier = modifier.fillMaxHeight()) {
+            Column(modifier = modifier) {
                 Spacer(modifier = modifier.height(222.dp))
                 Image(
                     painter = red_car,
                     contentDescription = null,
-                    modifier = Modifier
-                        .size(width = 386.dp, height = 241.dp)
+                    contentScale = ContentScale.FillWidth,
+                    modifier = modifier.height(247.dp).width(375.dp)
                         //.aspectRatio(red_car.intrinsicSize.width / red_car.intrinsicSize.height)
                 )
                 Spacer(modifier = Modifier.height(55.dp))
