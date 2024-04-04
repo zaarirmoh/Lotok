@@ -43,7 +43,7 @@ fun LotokTheme(
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
-    val statusBarColor = if(!isSystemInDarkTheme()) 0xFF9B9B9B.toInt() else 0xFF9B9B9B.toInt()
+    val statusBarColor = if(!isSystemInDarkTheme()) 0xFF9B9B9B.toInt() else 0xFF9B9B9B.toInt() // TO BE REMOVED WHEN DARK THEME IS READY
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
@@ -57,7 +57,7 @@ fun LotokTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = statusBarColor//colorScheme.primary.toArgb()
+            window.statusBarColor = statusBarColor  //colorScheme.primary.toArgb()
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
         }
     }
