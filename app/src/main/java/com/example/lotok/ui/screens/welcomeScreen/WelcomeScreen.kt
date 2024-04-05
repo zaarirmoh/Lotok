@@ -36,7 +36,8 @@ import com.example.lotok.ui.theme.LotokTheme
 
 @Composable
 fun WelcomeScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onButtonClicked: () -> Unit
 ) {
     val red_container_image = painterResource(id = R.drawable.red_container)
     val red_car = painterResource(id = R.drawable.red_car_1)
@@ -95,9 +96,8 @@ fun WelcomeScreen(
 
                 }
                 Spacer(modifier = Modifier.height(56.dp))
-
                 Button(
-                    onClick = { },
+                    onClick = onButtonClicked ,
                     modifier = Modifier
                         .align(Alignment.CenterHorizontally)
                         .size(width = 335.dp, height = 57.dp),
@@ -115,7 +115,7 @@ fun WelcomeScreen(
 @Composable
  fun WelcomeScreenPreview(){
     LotokTheme {
-        WelcomeScreen()
+        WelcomeScreen(onButtonClicked = {})
     }
     
 }

@@ -44,6 +44,7 @@ fun StartIconMenu(
 
 @Composable
 fun StartIconGoBack(
+    onButtonClicked: () -> Unit = {}
 ){
     Card(
         shape = RoundedCornerShape(100),
@@ -51,7 +52,7 @@ fun StartIconGoBack(
             containerColor = Color(0xFFF7F7F9)
         )
     ) {
-        IconButton(onClick = { /*TODO*/ }) {
+        IconButton(onClick = onButtonClicked) {
             Icon(
                 imageVector = Icons.Rounded.KeyboardArrowLeft,
                 contentDescription = null,

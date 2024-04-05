@@ -1,6 +1,10 @@
 package com.example.lotok.ui.navigation
 
+import androidx.compose.runtime.Composable
+
 enum class LotokScreen {
-    SplashScreen,
     WelcomeScreen,
+    HomeScreen,
+    SelectACarScreen,
+    SelectBrandScreen,
 }

@@ -14,6 +14,7 @@ import com.example.lotok.ui.components.topBar.EndIconNotification
 import com.example.lotok.ui.components.topBar.StartIconMenu
 import com.example.lotok.ui.components.topBar.TopBar
 import com.example.lotok.ui.components.topBar.TopBarCenterText
+import com.example.lotok.ui.navigation.LotokNavHost
 import com.example.lotok.ui.screens.homeScreen.HomeScreen
 import com.example.lotok.ui.theme.LotokTheme
 import com.example.lotok.ui.theme.RedBackground
@@ -29,7 +30,7 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize()
                 ) {
-                    HomeScreen()
+                    LotokNavHost()
                 }
             }
         }

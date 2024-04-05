@@ -16,14 +16,16 @@ import com.example.lotok.ui.components.topBar.TopBarCenterText
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun HomeScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onNotificationIconClicked: () -> Unit = {},
+    onMenuIconClicked: () -> Unit = {}
 ) {
     Scaffold(
         topBar = {
             TopBar(
-                startIcon = { StartIconGoBack() }, //StartIconMenu()
+                startIcon = { StartIconMenu(onButtonClicked = onMenuIconClicked) }, //StartIconMenu()
                 topBarCenter = { TopBarCenterLogo(imgSrc = R.drawable.logo_without_backround)},   //TopBarCenterText(text = "Home")
-                endIcon = { EndIconNotification() }
+                endIcon = { EndIconNotification(onButtonClicked = onNotificationIconClicked) }
             )
         }
     ) {
