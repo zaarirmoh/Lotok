@@ -14,6 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.lotok.R
+import com.example.lotok.ui.components.icons.MyAppIcons
 
 @Composable
 fun TopBarCenterText(
@@ -29,11 +30,10 @@ fun TopBarCenterText(
 
 @Composable
 fun TopBarCenterLogo(
-    @DrawableRes imgSrc: Int,
     modifier: Modifier = Modifier
 ){
     Icon(
-        painter = painterResource(id = imgSrc),
+        painter = painterResource(id = MyAppIcons.LotokLogo),
         contentDescription = null,
         modifier = modifier.scale(1.9F)
     )

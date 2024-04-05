@@ -7,6 +7,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
 import com.example.lotok.R
+import com.example.lotok.ui.components.icons.MyAppIcons
 import com.example.lotok.ui.theme.StartIconHomeColor
 
 @Composable
@@ -15,7 +16,7 @@ fun EndIconNotification(
 ){
     IconButton(onClick = onButtonClicked) {
         Icon(
-            imageVector = Icons.Filled.Notifications,
+            imageVector = MyAppIcons.Notification,
             contentDescription = null,
             tint = StartIconHomeColor
         )
@@ -28,7 +29,7 @@ fun EndIconProfile(
 ){
     IconButton(onClick = onButtonClicked) {
         Icon(
-            painter = painterResource(id = R.drawable.profile_icon),
+            painter = painterResource(id = MyAppIcons.Profile),
             contentDescription = null
         )
     }
@@ -39,7 +40,7 @@ fun EndIconEdit(
 ){
     IconButton(onClick = onButtonClicked) {
         Icon(
-            painter = painterResource(id = R.drawable.edit_icon),
+            painter = painterResource(id = MyAppIcons.Edit),
             contentDescription = null
         )
     }

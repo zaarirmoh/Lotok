@@ -24,6 +24,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.lotok.ui.components.icons.MyAppIcons
 import com.example.lotok.ui.theme.Shapes
 import com.example.lotok.ui.theme.StartIconHomeColor
 
@@ -34,7 +35,7 @@ fun StartIconMenu(
 ){
     IconButton(onClick = onButtonClicked) {
         Icon(
-            imageVector = Icons.Filled.Menu,
+            imageVector = MyAppIcons.Menu,
             contentDescription = null,
             tint = StartIconHomeColor,
             modifier = modifier
@@ -54,7 +55,7 @@ fun StartIconGoBack(
     ) {
         IconButton(onClick = onButtonClicked) {
             Icon(
-                imageVector = Icons.Rounded.KeyboardArrowLeft,
+                imageVector = MyAppIcons.GoBack,
                 contentDescription = null,
                 tint = Color(0xFF1B1E28)
             )

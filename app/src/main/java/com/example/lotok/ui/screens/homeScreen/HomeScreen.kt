@@ -5,6 +5,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.example.lotok.R
+import com.example.lotok.ui.components.icons.MyAppIcons
 import com.example.lotok.ui.components.topBar.EndIconNotification
 import com.example.lotok.ui.components.topBar.StartIconGoBack
 import com.example.lotok.ui.components.topBar.StartIconMenu
@@ -24,7 +25,7 @@ fun HomeScreen(
         topBar = {
             TopBar(
                 startIcon = { StartIconMenu(onButtonClicked = onMenuIconClicked) }, //StartIconMenu()
-                topBarCenter = { TopBarCenterLogo(imgSrc = R.drawable.logo_without_backround)},   //TopBarCenterText(text = "Home")
+                topBarCenter = { TopBarCenterLogo()},   //TopBarCenterText(text = "Home")
                 endIcon = { EndIconNotification(onButtonClicked = onNotificationIconClicked) }
             )
         }
