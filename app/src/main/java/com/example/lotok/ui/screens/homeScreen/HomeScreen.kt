@@ -4,14 +4,10 @@ import android.annotation.SuppressLint
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.lotok.R
-import com.example.lotok.ui.components.icons.MyAppIcons
 import com.example.lotok.ui.components.topBar.EndIconNotification
-import com.example.lotok.ui.components.topBar.StartIconGoBack
 import com.example.lotok.ui.components.topBar.StartIconMenu
 import com.example.lotok.ui.components.topBar.TopBar
 import com.example.lotok.ui.components.topBar.TopBarCenterLogo
-import com.example.lotok.ui.components.topBar.TopBarCenterText
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -29,7 +25,7 @@ fun HomeScreen(
                 endIcon = { EndIconNotification(onButtonClicked = onNotificationIconClicked) }
             )
         }
-    ) {
+    ){
 
     }
 }

@@ -3,6 +3,7 @@ package com.example.lotok.ui.screens.selectACarScreen
 import android.annotation.SuppressLint
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import com.example.lotok.ui.components.navigationBar.MyNavigationBar
 import com.example.lotok.ui.components.topBar.EndIconProfile
 import com.example.lotok.ui.components.topBar.StartIconGoBack
 import com.example.lotok.ui.components.topBar.TopBar
@@ -13,7 +14,8 @@ import com.example.lotok.ui.components.topBar.TopBarCenterText
 @Composable
 fun SelectACarScreen(
     onProfileIconClicked: () -> Unit = {},
-    onGoBackIconClicked: () -> Unit = {}
+    onGoBackIconClicked: () -> Unit = {},
+    onHomeIconClicked: () -> Unit = {}
 ){
     Scaffold(
         topBar = {

@@ -2,5 +2,7 @@
     <string name="app_name">Lotok</string>
     <string name="welcome_screen_text">Rent your Favourite Car</string>
     <string name="get_Started">Get Started</string>
+    <string name="TopBarMenuLogoNotification">TopBarMenuLogoNotification</string>
+    <string name="TopBarGoBackTextProfile">TopBarGoBackTextProfile</string>
 
 </resources>
