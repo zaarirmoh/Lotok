@@ -19,7 +19,7 @@ import com.example.lotok.ui.screens.homeScreen.HomeScreen
 import com.example.lotok.ui.theme.LotokTheme
 import com.example.lotok.ui.theme.RedBackground
 import com.example.lotok.ui.screens.welcomeScreen.WelcomeScreen
-
+//Moh
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
