@@ -1,12 +1,10 @@
-package com.example.lotok.ui.splashScreen
+package com.example.lotok.ui.screens.splashScreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.CircularProgressIndicator
@@ -47,7 +45,7 @@ fun SplachScreen(
         ) {
             Spacer(modifier = modifier.height(320.dp))
             Image(
-                painter = painterResource(id = R.drawable.logo_without_backround_2),
+                painter = painterResource(id = R.drawable.animated_logo),
                 contentDescription = null,
                 modifier = modifier
                     .height(101.dp)
