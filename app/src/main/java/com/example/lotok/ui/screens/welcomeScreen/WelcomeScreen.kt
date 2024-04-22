@@ -33,7 +33,7 @@ import com.example.lotok.R
 import com.example.lotok.ui.theme.LotokTheme
 
 
-
+//djawad
 @Composable
 fun WelcomeScreen(
     modifier: Modifier = Modifier,
