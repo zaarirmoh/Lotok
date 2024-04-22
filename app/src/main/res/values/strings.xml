@@ -4,5 +4,8 @@
     <string name="get_Started">Get Started</string>
     <string name="TopBarMenuLogoNotification">TopBarMenuLogoNotification</string>
     <string name="TopBarGoBackTextProfile">TopBarGoBackTextProfile</string>
+    <string name="SearchForACar">Search for a car</string>
+    <string name="Categories">Categories</string>
+    <string name="PopularCars">Popular cars</string>
 
 </resources>

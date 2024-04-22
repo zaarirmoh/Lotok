@@ -63,7 +63,7 @@ fun WelcomeScreen(
 
             )
 
-            Spacer(modifier = Modifier.height(55.dp))
+            Spacer(modifier = modifier.height(55.dp))
 
             Image(
                 painter = red_car,
@@ -74,9 +74,9 @@ fun WelcomeScreen(
 
             )
         }
-        Spacer(modifier = Modifier.height(55.dp))
+        Spacer(modifier = modifier.height(55.dp))
 
-        Column(modifier=Modifier.fillMaxWidth(),horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(modifier= modifier.fillMaxWidth(),horizontalAlignment = Alignment.CenterHorizontally) {
             Text(
                 text = buildAnnotatedString {
                     withStyle(style = SpanStyle(color = Color.Black)) {

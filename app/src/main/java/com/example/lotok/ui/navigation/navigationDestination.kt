@@ -14,7 +14,7 @@ import com.example.lotok.ui.components.navigationBar.MyNavigationBar
 import com.example.lotok.ui.screens.homeScreen.HomeScreen
 import com.example.lotok.ui.screens.selectACarScreen.SelectACarScreen
 import com.example.lotok.ui.screens.selectBrandScreen.SelectBrandScreen
-import com.example.lotok.ui.screens.welcomeScreen.WelcomeScreen
+import com.example.lotok.ui.welcomeScreen.WelcomeScreen
 
 
 // ToDo: Try to Extract the scaffold out so all the screen have like one topAppBar and one NavigationBar
@@ -78,5 +78,4 @@ fun LotokNavHost(
             }
         }
     }
-
 }
