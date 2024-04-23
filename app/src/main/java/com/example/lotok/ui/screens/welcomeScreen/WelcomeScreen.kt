@@ -1,4 +1,4 @@
-package com.example.lotok.ui.welcomeScreen
+package com.example.lotok.ui.screens.welcomeScreen
 
 
 
@@ -33,18 +33,18 @@ import com.example.lotok.R
 import com.example.lotok.ui.theme.LotokTheme
 
 
-//djawad
+
 @Composable
 fun WelcomeScreen(
     modifier: Modifier = Modifier,
     onButtonClicked: () -> Unit ,
 ) {
-    val red_container_image = painterResource(id = R.drawable.red_container)
-    val red_car = painterResource(id = R.drawable.red_car)
+    val redContainerImage = painterResource(id = R.drawable.red_container)
+    val redCar = painterResource(id = R.drawable.red_car)
     val text = stringResource(id = R.string.welcome_screen_text)
-    val button_text = stringResource(id = R.string.get_Started)
     val words = text.split(" ")
     val buttonColor = Color(android.graphics.Color.parseColor("#B3261E"))
+    val buttonText = stringResource(id = R.string.get_Started)
 
 
     Column(modifier = modifier) {
@@ -53,7 +53,7 @@ fun WelcomeScreen(
             contentAlignment = Alignment.TopCenter
         ) {
             Image(
-                painter = red_container_image,
+                painter = redContainerImage,
                 contentDescription = null,
                 modifier = modifier
                     .fillMaxWidth()
@@ -66,7 +66,7 @@ fun WelcomeScreen(
             Spacer(modifier = modifier.height(55.dp))
 
             Image(
-                painter = red_car,
+                painter = redCar,
                 contentDescription = null,
                 modifier = Modifier
                     .size(width = 386.dp, height = 241.dp)
@@ -90,16 +90,15 @@ fun WelcomeScreen(
                     }
                 },
                 fontSize = 27.sp,
-                fontWeight = FontWeight.Bold,
+                fontWeight = FontWeight.Bold
             )
 
             Text(
                 text = words.getOrNull(3) ?: "",
                 fontSize = 27.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.Black
+                color = Color.Black,
                 )
-
         }
 
 
@@ -115,7 +114,7 @@ fun WelcomeScreen(
 
             colors = ButtonDefaults.buttonColors(buttonColor)
         ) {
-            Text( text = button_text, fontSize = 18.sp , color = Color.White   , fontWeight = FontWeight.Bold  )
+            Text( text = buttonText, fontSize = 18.sp , color = Color.White   , fontWeight = FontWeight.Bold  )
         }
     }
 }
