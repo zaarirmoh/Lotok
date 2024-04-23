@@ -140,7 +140,7 @@ fun Rating(
     stars: Double
 ){
     val integerPart = stars.toInt()
-    val decimalPart = stars-integerPart
+    var decimalPart = stars-integerPart
     Row(
         modifier = modifier.padding(start = 8.dp, top = 5.dp),
         horizontalArrangement = Arrangement.Start,
@@ -161,7 +161,7 @@ fun Rating(
                 modifier = modifier.size(15.dp)
             )
         }
-        repeat(5-integerPart){
+        repeat(5-integerPart+1){
             Icon(
                 imageVector = Icons.Default.StarBorder,
                 contentDescription = null,
