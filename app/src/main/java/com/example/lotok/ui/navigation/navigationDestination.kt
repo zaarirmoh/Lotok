@@ -10,11 +10,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.lotok.data.CarBrandsTry
 import com.example.lotok.ui.components.navigationBar.MyNavigationBar
 import com.example.lotok.ui.screens.homeScreen.HomeScreen
 import com.example.lotok.ui.screens.selectACarScreen.SelectACarScreen
 import com.example.lotok.ui.screens.selectBrandScreen.SelectBrandScreen
 import com.example.lotok.ui.screens.welcomeScreen.WelcomeScreen
+
 
 
 // ToDo: Try to Extract the scaffold out so all the screen have like one topAppBar and one NavigationBar
@@ -72,7 +74,7 @@ fun LotokNavHost(
                 )
             }
             composable(route = LotokScreen.SelectBrandScreen.name){
-                SelectBrandScreen(onGoBackIconClicked = {
+                SelectBrandScreen(carBrandsList = CarBrandsTry.carBrandsList, onGoBackIconClicked = {
                     navController.navigateUp()
                 })
             }

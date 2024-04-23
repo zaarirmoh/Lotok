@@ -1,7 +1,7 @@
 package com.example.lotok.data
 
 
-const val id: Int = 0
+private const val id: Int = 0
 object DataTry {
     val dataCarsList: List<CarPost> = listOf(
         CarPost(
