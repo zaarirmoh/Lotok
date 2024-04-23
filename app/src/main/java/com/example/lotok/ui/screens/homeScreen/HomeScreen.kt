@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.Button
@@ -48,37 +50,16 @@ fun HomeScreen(
             modifier = modifier
                 .padding(paddingContent)
                 .padding(bottom = navigationBarHeight.dp)
-                //.verticalScroll(rememberScrollState())
+                .verticalScroll(rememberScrollState())
         ){
-                Spacer(modifier = modifier.height(11.dp))
-                Box {
-                    Button(
-                        onClick = onSearchForACarButtonClicked,
-                        modifier = modifier
-                            .height(50.dp)
-                            .fillMaxWidth()
-                            .padding(start = 30.dp, end = 30.dp)
-                    ) {
-                        Text(
-                            text = stringResource(id = R.string.SearchForACar),
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Bold,
-                        )
-                    }
-                    Icon(
-                        imageVector = Icons.Rounded.Search,
-                        contentDescription = null,
-                        tint = md_theme_light_onPrimary,
-                        modifier = modifier
-                            .align(Alignment.CenterStart)
-                            .padding(start = 40.dp)
-
-                    )
-                }
-                Spacer(modifier = modifier.height(25.dp))
-                Categories()
-                Spacer(modifier = modifier.height(25.dp))
-                PopularCars()
+            Spacer(modifier = modifier.height(11.dp))
+            SearchForACar(onSearchForACarButtonClicked = onSearchForACarButtonClicked)
+            Spacer(modifier = modifier.height(32.dp))
+            FilterCars()
+            Spacer(modifier = modifier.height(25.dp))
+            Categories()
+            Spacer(modifier = modifier.height(25.dp))
+            PopularCars()
         }
     }
 }

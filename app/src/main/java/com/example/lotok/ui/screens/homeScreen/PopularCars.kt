@@ -74,7 +74,7 @@ fun CarPosts(
         contentPadding = PaddingValues(8.dp),
         verticalArrangement = Arrangement.spacedBy(18.dp),
         horizontalArrangement = Arrangement.spacedBy(13.dp),
-        //modifier = modifier.height(218*Data.carPosts.size)
+        modifier = modifier.height((220*Data.carPosts.size).dp)
     ) {
         items(Data.carPosts){
             CarPost(carPostInfo = it)
