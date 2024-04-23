@@ -76,7 +76,10 @@ fun WelcomeScreen(
         }
         Spacer(modifier = modifier.height(55.dp))
 
-        Column(modifier= modifier.fillMaxWidth(),horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(
+            modifier= modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             Text(
                 text = buildAnnotatedString {
                     withStyle(style = SpanStyle(color = Color.Black)) {

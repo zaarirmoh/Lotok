@@ -34,6 +34,7 @@ fun HomeScreen(
     onMenuIconClicked: () -> Unit = {},
     onSearchForACarButtonClicked: () -> Unit = {},
 ) {
+    val navigationBarHeight = 90
     Scaffold(
         topBar = {
             TopBar(
@@ -44,37 +45,40 @@ fun HomeScreen(
         }
     ){ paddingContent ->
         Column(
-            modifier = modifier.padding(paddingContent),
-        ) {
-            Spacer(modifier = modifier.height(11.dp))
-            Box {
-                Button(
-                    onClick = onSearchForACarButtonClicked,
-                    modifier = modifier
-                        .height(50.dp)
-                        .fillMaxWidth()
-                        .padding(start = 30.dp, end = 30.dp)
-                ) {
-                    Text(
-                        text = stringResource(id = R.string.SearchForACar),
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
+            modifier = modifier
+                .padding(paddingContent)
+                .padding(bottom = navigationBarHeight.dp)
+                //.verticalScroll(rememberScrollState())
+        ){
+                Spacer(modifier = modifier.height(11.dp))
+                Box {
+                    Button(
+                        onClick = onSearchForACarButtonClicked,
+                        modifier = modifier
+                            .height(50.dp)
+                            .fillMaxWidth()
+                            .padding(start = 30.dp, end = 30.dp)
+                    ) {
+                        Text(
+                            text = stringResource(id = R.string.SearchForACar),
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Bold,
+                        )
+                    }
+                    Icon(
+                        imageVector = Icons.Rounded.Search,
+                        contentDescription = null,
+                        tint = md_theme_light_onPrimary,
+                        modifier = modifier
+                            .align(Alignment.CenterStart)
+                            .padding(start = 40.dp)
+
                     )
                 }
-                Icon(
-                    imageVector = Icons.Rounded.Search,
-                    contentDescription = null,
-                    tint = md_theme_light_onPrimary,
-                    modifier = modifier
-                        .align(Alignment.CenterStart)
-                        .padding(start = 40.dp)
-
-                )
-            }
-            Spacer(modifier = modifier.height(25.dp))
-            Categories()
-            Spacer(modifier = modifier.height(25.dp))
-            PopularCars()
+                Spacer(modifier = modifier.height(25.dp))
+                Categories()
+                Spacer(modifier = modifier.height(25.dp))
+                PopularCars()
         }
     }
 }
