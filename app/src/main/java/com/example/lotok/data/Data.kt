@@ -2,102 +2,97 @@ package com.example.lotok.data
 
 import com.example.lotok.R
 
-const val id: Int = 0
-object Data {
-    val carPosts: List<CarPost> = listOf(
+
+private const val id: Int = 0
+object DataTry {
+    val dataCarsList: List<CarPost> = listOf(
         CarPost(
             id = id,
-            imgSrc = R.drawable.car_image_sample,
-            name = "i4 Grand Coupe",
+            imgSrc = listOf(R.drawable.car_picture,R.drawable.car2_pic,R.drawable.car3_pic,R.drawable.car4_pic),
+            name = "M4 Competition",
             mark = "BMW",
             year = 2000,
             engine = "V8",
             dayPrice = 4000,
             weekPrice = 12000,
-            rating = 3.5,
+            rating = 4,
             ),
         CarPost(
             id = id,
-            imgSrc = R.drawable.car_image_sample,
+            imgSrc = listOf(),
             name = "M4 Competition",
             mark = "BMW",
             year = 2000,
             engine = "V8",
             dayPrice = 4000,
             weekPrice = 12000,
-            rating = 3.5,
+            rating = 4,
         ),
         CarPost(
             id = id,
-            imgSrc = R.drawable.car_image_sample,
+            imgSrc = listOf(),
             name = "M4 Competition",
             mark = "BMW",
             year = 2000,
             engine = "V8",
             dayPrice = 4000,
             weekPrice = 12000,
-            rating = 3.5,
+            rating = 4,
         ),
         CarPost(
             id = id,
-            imgSrc = R.drawable.car_image_sample,
+            imgSrc = listOf(),
             name = "M4 Competition",
             mark = "BMW",
             year = 2000,
             engine = "V8",
             dayPrice = 4000,
             weekPrice = 12000,
-            rating = 3.5,
+            rating = 4,
         ),
         CarPost(
             id = id,
-            imgSrc = R.drawable.car_image_sample,
+            imgSrc = listOf(),
             name = "M4 Competition",
             mark = "BMW",
             year = 2000,
             engine = "V8",
             dayPrice = 4000,
             weekPrice = 12000,
-            rating = 3.5,
+            rating = 4,
         ),
         CarPost(
             id = id,
-            imgSrc = R.drawable.car_image_sample,
+            imgSrc = listOf(),
             name = "M4 Competition",
             mark = "BMW",
             year = 2000,
             engine = "V8",
             dayPrice = 4000,
             weekPrice = 12000,
-            rating = 3.5,
+            rating = 4,
         ),
         CarPost(
             id = id,
-            imgSrc = R.drawable.car_image_sample,
+            imgSrc = listOf(),
             name = "M4 Competition",
             mark = "BMW",
             year = 2000,
             engine = "V8",
             dayPrice = 4000,
             weekPrice = 12000,
-            rating = 3.5,
+            rating = 4,
         ),
         CarPost(
             id = id,
-            imgSrc = R.drawable.car_image_sample,
+            imgSrc = listOf(),
             name = "M4 Competition",
             mark = "BMW",
             year = 2000,
             engine = "V8",
             dayPrice = 4000,
             weekPrice = 12000,
-            rating = 3.5,
+            rating = 4,
         ),
-    )
-    val categories = listOf(
-        Category(R.drawable.car_category),
-        Category(R.drawable.motorcycle_category),
-        Category(R.drawable.master_category),
-        Category(R.drawable.truck_category)
     )
 }
