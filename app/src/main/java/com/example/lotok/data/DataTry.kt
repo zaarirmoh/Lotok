@@ -1,12 +1,14 @@
 package com.example.lotok.data
 
+import com.example.lotok.R
+
 
 private const val id: Int = 0
 object DataTry {
     val dataCarsList: List<CarPost> = listOf(
         CarPost(
             id = id,
-            imgSrc = "Image",
+            imgSrc = listOf(R.drawable.car_picture,R.drawable.car2_pic,R.drawable.car3_pic,R.drawable.car4_pic),
             name = "M4 Competition",
             mark = "BMW",
             year = 2000,
@@ -17,7 +19,7 @@ object DataTry {
             ),
         CarPost(
             id = id,
-            imgSrc = "Image",
+            imgSrc = listOf(),
             name = "M4 Competition",
             mark = "BMW",
             year = 2000,
@@ -28,7 +30,7 @@ object DataTry {
         ),
         CarPost(
             id = id,
-            imgSrc = "Image",
+            imgSrc = listOf(),
             name = "M4 Competition",
             mark = "BMW",
             year = 2000,
@@ -39,7 +41,7 @@ object DataTry {
         ),
         CarPost(
             id = id,
-            imgSrc = "Image",
+            imgSrc = listOf(),
             name = "M4 Competition",
             mark = "BMW",
             year = 2000,
@@ -50,7 +52,7 @@ object DataTry {
         ),
         CarPost(
             id = id,
-            imgSrc = "Image",
+            imgSrc = listOf(),
             name = "M4 Competition",
             mark = "BMW",
             year = 2000,
@@ -61,7 +63,7 @@ object DataTry {
         ),
         CarPost(
             id = id,
-            imgSrc = "Image",
+            imgSrc = listOf(),
             name = "M4 Competition",
             mark = "BMW",
             year = 2000,
@@ -72,7 +74,7 @@ object DataTry {
         ),
         CarPost(
             id = id,
-            imgSrc = "Image",
+            imgSrc = listOf(),
             name = "M4 Competition",
             mark = "BMW",
             year = 2000,
@@ -83,7 +85,7 @@ object DataTry {
         ),
         CarPost(
             id = id,
-            imgSrc = "Image",
+            imgSrc = listOf(),
             name = "M4 Competition",
             mark = "BMW",
             year = 2000,
