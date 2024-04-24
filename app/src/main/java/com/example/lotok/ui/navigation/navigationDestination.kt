@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -18,7 +20,6 @@ import com.example.lotok.ui.screens.selectBrandScreen.SelectBrandScreen
 import com.example.lotok.ui.screens.welcomeScreen.WelcomeScreen
 
 
-
 // ToDo: Try to Extract the scaffold out so all the screen have like one topAppBar and one NavigationBar
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -27,6 +28,8 @@ fun LotokNavHost(
     navController: NavHostController = rememberNavController()
 ) {
     val backStackEntry by navController.currentBackStackEntryAsState()
+    val expandedMenu = remember { mutableStateOf(false)}
+    val openDialog = remember { mutableStateOf(false)}
     // Get the name of the current screen
     val currentScreen = LotokScreen.valueOf(
         backStackEntry?.destination?.route ?: LotokScreen.WelcomeScreen.name
@@ -57,7 +60,12 @@ fun LotokNavHost(
                 HomeScreen(
                     onNotificationIconClicked = {
                         navController.navigate(LotokScreen.SelectACarScreen.name)
-                    }
+                    },
+                    onMenuIconClicked = {
+                        expandedMenu.value = true
+                    },
+                    openDialog = openDialog,
+                    expendedMenu = expandedMenu
                 )
             }
             composable(route = LotokScreen.SelectACarScreen.name){

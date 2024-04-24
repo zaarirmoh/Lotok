@@ -46,17 +46,17 @@ fun SelectBrandScreen(
             )
         }
     ) {
-         LazyVerticalGrid (
-             modifier = Modifier
-                 .fillMaxWidth()
-                 .padding(start = 12.dp,end = 12.dp),
-             columns = GridCells.Adaptive(150.dp),
-             contentPadding = it,
-             horizontalArrangement = Arrangement.SpaceEvenly
+        LazyVerticalGrid (
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 12.dp,end = 12.dp),
+            columns = GridCells.Adaptive(150.dp),
+            contentPadding = it,
+            horizontalArrangement = Arrangement.SpaceEvenly
         ) {items(items = carBrandsList,key = {carBrand -> carBrand.id}){
                 carBrand -> BrandCard(
             brandPic = carBrand.brandPic,
-             onClicked = carBrand.onClicked,
+            onClicked = carBrand.onClicked,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(13.dp)
@@ -77,14 +77,13 @@ fun BrandCard(
     modifier: Modifier,
 ){
 
-    Card(
-        onClick =  onClicked ,
+    Card(         onClick =  onClicked ,
         shape = RoundedCornerShape(12.dp),
         colors = CardDefaults.cardColors(Color.White),
         elevation = CardDefaults.cardElevation(13.dp),
         modifier = modifier,
 
-    ){
+        ){
         Image(
             painter = painterResource(brandPic),
             contentDescription = null,
@@ -93,7 +92,6 @@ fun BrandCard(
                 .padding(16.dp)
                 .align(Alignment.CenterHorizontally)
         )
-
     }
 }
 
@@ -108,7 +106,7 @@ fun BrandCardPreview(){
 }
 
 
- @Composable
+@Composable
 @Preview
 fun SelectBrandScreenPreview(){
     Surface(color = Color.White, modifier = Modifier.fillMaxSize()) {
