@@ -60,39 +60,3 @@ fun MyNavigationBar(
         }
     }
 }
-
-
-/*
-    androidx.compose.material3.NavigationBar {
-        NavigationBarItem(
-            selected = ,
-            onClick = { /*TODO*/ },
-            icon = { /*TODO*/ },
-            label = { Text(text = ) }
-        )
-        NavigationBarItem(
-            selected = ,
-            onClick = { /*TODO*/ },
-            icon = { /*TODO*/ },
-            label = { Text(text = ) }
-        )
-        NavigationBarItem(
-            selected = ,
-            onClick = { /*TODO*/ },
-            icon = { /*TODO*/ },
-            label = { Text(text = ) }
-        )
-        NavigationBarItem(
-            selected = ,
-            onClick = { /*TODO*/ },
-            icon = { /*TODO*/ },
-            label = { Text(text = ) }
-        )
-        NavigationBarItem(
-            selected = ,
-            onClick = { /*TODO*/ },
-            icon = { /*TODO*/ },
-            label = { Text(text = ) }
-        )
-    }
- */

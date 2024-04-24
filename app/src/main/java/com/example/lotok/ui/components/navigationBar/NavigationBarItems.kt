@@ -40,7 +40,7 @@ val items = listOf(
         route = LotokScreen.HomeScreen.name
     ),
     BottomNavigationItem(
-        title = "Chat",
+        title = "Favourites",
         selectedIcon = Icons.Filled.Favorite,
         unselectedIcon = Icons.Outlined.FavoriteBorder,
         hasNews = false,
@@ -48,7 +48,7 @@ val items = listOf(
         route = LotokScreen.HomeScreen.name
     ),
     BottomNavigationItem(
-        title = "Chat",
+        title = "Profile",
         selectedIcon = Icons.Filled.Person,
         unselectedIcon = Icons.Outlined.Person,
         hasNews = false,

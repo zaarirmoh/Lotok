@@ -17,7 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 fun TopBar(
     modifier: Modifier = Modifier,
     startIcon: @Composable () -> Unit = {} ,
-    topBarCenter: @Composable () -> Unit ,
+    topBarCenter: @Composable () -> Unit = {} ,
     endIcon: @Composable (RowScope.() -> Unit) = {} ,
 ){
     CenterAlignedTopAppBar(

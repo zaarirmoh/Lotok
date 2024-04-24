@@ -11,4 +11,5 @@ enum class LotokScreen(
     HomeScreen(true),//R.string.TopBarMenuLogoNotification
     SelectACarScreen(false),//R.string.TopBarGoBackTextProfile
     SelectBrandScreen(false),
+    ProfileScreen(true),
 }

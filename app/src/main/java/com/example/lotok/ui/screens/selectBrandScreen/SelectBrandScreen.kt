@@ -35,7 +35,8 @@ import com.example.lotok.ui.theme.LotokTheme
 @Composable
 fun SelectBrandScreen(
     carBrandsList: List<CarBrand>,
-    onGoBackIconClicked: () -> Unit = {}
+    onGoBackIconClicked: () -> Unit = {},
+    onLogoClicked: () -> Unit = {}
 ){
     Scaffold(
         topBar = {
@@ -49,23 +50,21 @@ fun SelectBrandScreen(
         LazyVerticalGrid (
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 12.dp,end = 12.dp),
+                .padding(start = 12.dp, end = 12.dp),
             columns = GridCells.Adaptive(150.dp),
             contentPadding = it,
             horizontalArrangement = Arrangement.SpaceEvenly
-        ) {items(items = carBrandsList,key = {carBrand -> carBrand.id}){
-                carBrand -> BrandCard(
-            brandPic = carBrand.brandPic,
-            onClicked = carBrand.onClicked,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(13.dp)
-                .aspectRatio(1f)
-        )
-
+        ) {
+            items(items = carBrandsList){ carBrand -> BrandCard(
+                brandPic = carBrand.brandPic,
+                onClicked = onLogoClicked ,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(13.dp)
+                    .aspectRatio(1f)
+            )
+            }
         }
-        }
-
     }
 }
 
@@ -105,8 +104,6 @@ fun BrandCardPreview(){
             .fillMaxWidth()
             .aspectRatio(1.5f))
 }
-
-
 @Composable
 @Preview
 fun SelectBrandScreenPreview(){

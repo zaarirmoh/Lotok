@@ -90,7 +90,7 @@ private val DarkColors = darkColorScheme(
 fun LotokTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val statusBarColor = if(!isSystemInDarkTheme()) 0xFF9B9B9B.toInt() else 0xFF9B9B9B.toInt() // TO BE REMOVED WHEN DARK THEME IS READY
