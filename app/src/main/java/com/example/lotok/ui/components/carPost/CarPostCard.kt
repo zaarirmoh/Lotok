@@ -47,7 +47,7 @@ fun CarPostCard(
                     .height(105.dp)
             ) {
                 Image(
-                    painter = painterResource(id = carPostInfo.imgSrc),
+                    painter = painterResource(id = carPostInfo.imgSrc[0]),
                     contentDescription = null,
                     modifier = modifier
                         .fillMaxWidth()

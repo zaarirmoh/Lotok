@@ -37,7 +37,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.lotok.data.CarPost
-import com.example.lotok.data.DataTry
+import com.example.lotok.data.Data
 import com.example.lotok.ui.components.topBar.EndIconProfile
 import com.example.lotok.ui.components.topBar.StartIconGoBack
 import com.example.lotok.ui.components.topBar.TopBar
@@ -257,13 +257,13 @@ fun PreviewStarRating() {
 @Preview(showBackground = true)
 fun NameAndPricePreview(){
     NameAndPrice(
-        name = DataTry.dataCarsList[0].name,
-        mark = DataTry.dataCarsList[0].mark,
-        dayPrice = DataTry.dataCarsList[0].dayPrice,
-        weekPrice = DataTry.dataCarsList[0].weekPrice
+        name = Data.carPostsList[0].name,
+        mark = Data.carPostsList[0].mark,
+        dayPrice = Data.carPostsList[0].dayPrice,
+        weekPrice = Data.carPostsList[0].weekPrice
     )
 }
 @Composable
 @Preview fun CarPicturePreview(){
-    CarPicture(imgSrc = DataTry.dataCarsList[0].imgSrc)
+    CarPicture(imgSrc = Data.carPostsList[0].imgSrc)
 }

@@ -16,7 +16,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -39,7 +38,7 @@ fun Categories(
         )
         Spacer(modifier = modifier.height(11.dp))
         LazyRow {
-            items(Data.categories){
+            items(Data.categoriesList){
                 Spacer(modifier = modifier.width(30.dp))
                 CategoryCard(categoryPhoto = it.imgSrc)
             }

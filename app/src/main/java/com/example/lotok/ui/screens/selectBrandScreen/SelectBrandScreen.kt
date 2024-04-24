@@ -24,7 +24,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.lotok.data.CarBrand
-import com.example.lotok.data.CarBrandsTry
+import com.example.lotok.data.Data
 import com.example.lotok.ui.components.topBar.EndIconProfile
 import com.example.lotok.ui.components.topBar.StartIconGoBack
 import com.example.lotok.ui.components.topBar.TopBar
@@ -98,7 +98,8 @@ fun BrandCard(
 @Composable
 @Preview
 fun BrandCardPreview(){
-    BrandCard(CarBrandsTry.carBrandsList[1].brandPic,
+    BrandCard(
+        Data.carBrandsList[1].brandPic,
         {},
         modifier = Modifier
             .fillMaxWidth()
@@ -112,7 +113,7 @@ fun SelectBrandScreenPreview(){
     Surface(color = Color.White, modifier = Modifier.fillMaxSize()) {
         LotokTheme {
             SelectBrandScreen(
-                CarBrandsTry.carBrandsList,
+                Data.carBrandsList,
                 onGoBackIconClicked = {}
             )
         }

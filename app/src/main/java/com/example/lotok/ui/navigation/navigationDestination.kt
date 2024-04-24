@@ -12,7 +12,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.lotok.data.CarBrandsTry
+import com.example.lotok.data.Data
 import com.example.lotok.ui.components.navigationBar.MyNavigationBar
 import com.example.lotok.ui.screens.homeScreen.HomeScreen
 import com.example.lotok.ui.screens.selectACarScreen.SelectACarScreen
@@ -82,7 +82,7 @@ fun LotokNavHost(
                 )
             }
             composable(route = LotokScreen.SelectBrandScreen.name){
-                SelectBrandScreen(carBrandsList = CarBrandsTry.carBrandsList, onGoBackIconClicked = {
+                SelectBrandScreen(carBrandsList = Data.carBrandsList, onGoBackIconClicked = {
                     navController.navigateUp()
                 })
             }

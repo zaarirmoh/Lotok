@@ -11,5 +11,5 @@ data class CarPost(
     val engine: String,
     val dayPrice: Int,
     val weekPrice: Int,
-    val rating: Int,
+    val rating: Double,
 )
