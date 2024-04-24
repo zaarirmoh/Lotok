@@ -15,6 +15,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -22,6 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.lotok.R
+import com.example.lotok.ui.components.datePickers.DateRangePicker
 import com.example.lotok.ui.components.topBar.EndIconNotification
 import com.example.lotok.ui.components.topBar.StartIconMenu
 import com.example.lotok.ui.components.topBar.TopBar
@@ -37,6 +40,7 @@ fun HomeScreen(
     onSearchForACarButtonClicked: () -> Unit = {},
 ) {
     val navigationBarHeight = 90
+    val openDialog = remember { mutableStateOf(false) }
     Scaffold(
         topBar = {
             TopBar(
@@ -55,11 +59,15 @@ fun HomeScreen(
             Spacer(modifier = modifier.height(11.dp))
             SearchForACar(onSearchForACarButtonClicked = onSearchForACarButtonClicked)
             Spacer(modifier = modifier.height(32.dp))
-            FilterCars()
+            FilterCars(
+                onStateButtonClicked = {},
+                onFromToButtonClicked = {openDialog.value = !openDialog.value}
+            )
             Spacer(modifier = modifier.height(25.dp))
             Categories()
             Spacer(modifier = modifier.height(25.dp))
             PopularCars()
         }
+        DateRangePicker(openDialog = openDialog)
     }
 }
