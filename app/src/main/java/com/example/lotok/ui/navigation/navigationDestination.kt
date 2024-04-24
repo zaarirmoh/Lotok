@@ -59,10 +59,12 @@ fun LotokNavHost(
             composable(route = LotokScreen.HomeScreen.name){
                 HomeScreen(
                     onNotificationIconClicked = {
-                        navController.navigate(LotokScreen.SelectACarScreen.name)
                     },
                     onMenuIconClicked = {
                         expandedMenu.value = true
+                    },
+                    onSearchForACarButtonClicked = {
+                        navController.navigate(LotokScreen.SelectBrandScreen.name)
                     },
                     openDialog = openDialog,
                     expendedMenu = expandedMenu
@@ -71,7 +73,6 @@ fun LotokNavHost(
             composable(route = LotokScreen.SelectACarScreen.name){
                 SelectACarScreen(
                     onProfileIconClicked = {
-                        navController.navigate(LotokScreen.SelectBrandScreen.name)
                     },
                     onGoBackIconClicked = {
                         navController.navigateUp()
@@ -82,9 +83,12 @@ fun LotokNavHost(
                 )
             }
             composable(route = LotokScreen.SelectBrandScreen.name){
-                SelectBrandScreen(carBrandsList = Data.carBrandsList, onGoBackIconClicked = {
-                    navController.navigateUp()
-                })
+                SelectBrandScreen(
+                    carBrandsList = Data.carBrandsList,
+                    onGoBackIconClicked = {
+                        navController.navigateUp()
+                    }
+                )
             }
         }
     }

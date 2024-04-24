@@ -29,7 +29,7 @@ val items = listOf(
         unselectedIcon = Icons.Outlined.ShoppingCart,
         hasNews = false,
         badgeCount = 45,
-        route = LotokScreen.SelectACarScreen.name
+        route = LotokScreen.HomeScreen.name
     ),
     BottomNavigationItem(
         title = "Add",
@@ -37,7 +37,7 @@ val items = listOf(
         unselectedIcon = Icons.Outlined.ControlPoint,
         hasNews = false,
         badgeCount = 45,
-        route = LotokScreen.SelectACarScreen.name
+        route = LotokScreen.HomeScreen.name
     ),
     BottomNavigationItem(
         title = "Chat",
@@ -45,7 +45,7 @@ val items = listOf(
         unselectedIcon = Icons.Outlined.FavoriteBorder,
         hasNews = false,
         badgeCount = 45,
-        route = LotokScreen.SelectACarScreen.name
+        route = LotokScreen.HomeScreen.name
     ),
     BottomNavigationItem(
         title = "Chat",
@@ -53,6 +53,6 @@ val items = listOf(
         unselectedIcon = Icons.Outlined.Person,
         hasNews = false,
         badgeCount = 45,
-        route = LotokScreen.SelectACarScreen.name
+        route = LotokScreen.HomeScreen.name
     )
 )
