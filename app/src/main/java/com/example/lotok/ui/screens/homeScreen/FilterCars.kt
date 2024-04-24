@@ -1,6 +1,6 @@
 package com.example.lotok.ui.screens.homeScreen
 
-import android.health.connect.datatypes.units.Energy
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,62 +10,78 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.LocationOn
-import androidx.compose.material.icons.rounded.Search
+import androidx.compose.material.icons.outlined.AccessTime
+import androidx.compose.material.icons.outlined.CalendarMonth
+import androidx.compose.material.icons.outlined.EnergySavingsLeaf
+import androidx.compose.material.icons.outlined.LocationOn
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.lotok.R
-import com.example.lotok.ui.theme.md_theme_light_onPrimary
-import java.time.Year
 
 @Composable
 fun FilterCars(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onStateButtonClicked: () -> Unit = {},
+    onFromToButtonClicked: () -> Unit = {},
+    onYearButtonClicked: () -> Unit = {},
+    onEnergyButtonClicked: () -> Unit = {}
 ){
     Column {
         Row(
             modifier = modifier.fillMaxWidth()
         ) {
-            State()
-            FromTo()
+            State(onStateButtonClicked = onStateButtonClicked)
+            Spacer(modifier = modifier.width(18.dp))
+            FromTo(onFromToButtonClicked = onFromToButtonClicked)
         }
-        Row {
-            Year()
-            Energy()
+        Spacer(modifier = modifier.height(22.dp))
+        Row(
+            modifier = modifier.fillMaxWidth(),
+        ) {
+            Year(onYearButtonClicked = onYearButtonClicked)
+            Spacer(modifier = modifier.width(34.dp))
+            Energy(onEnergyButtonClicked = onEnergyButtonClicked)
         }
     }
 }
 
 @Composable
 fun State(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onStateButtonClicked: () -> Unit
 ){
-    Box {
+    Box{
         Button(
-            onClick = {  },
+            onClick = onStateButtonClicked,
+            modifier = modifier
+                .padding(start = 44.dp)
+                .height(34.dp)
+                .width(106.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFDADADA))
 
         ) {
             Text(
-                text = ,
-                fontSize = ,
-                fontWeight = ,
+                text = stringResource(id = R.string.State),
+                color = Color.Black
             )
         }
         Icon(
-            imageVector = ,
+            imageVector = Icons.Outlined.LocationOn,
             contentDescription = null,
-            tint = ,
+            tint = Color(0xFF9B9B9B),
             modifier = modifier
                 .align(Alignment.CenterStart)
-                .padding(start =)
+                .padding(start = 48.dp)
 
         )
     }
@@ -73,26 +89,31 @@ fun State(
 
 @Composable
 fun FromTo(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onFromToButtonClicked: () -> Unit
 ){
     Box {
         Button(
-            onClick = {  },
-
-            ) {
+            onClick = onFromToButtonClicked,
+            modifier = modifier
+                //.width(200.dp)
+                .fillMaxWidth()
+                .height(34.dp)
+                .padding(end = 29.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFDADADA))
+        ) {
             Text(
-                text = ,
-                fontSize = ,
-                fontWeight = ,
+                text = stringResource(id = R.string.FromTo),
+                color = Color.Black
             )
         }
         Icon(
-            imageVector = ,
+            imageVector = Icons.Outlined.CalendarMonth,
             contentDescription = null,
-            tint = ,
+            tint = Color(0xFF9B9B9B),
             modifier = modifier
                 .align(Alignment.CenterStart)
-                .padding(start =)
+                .padding(start = 5.dp)
 
         )
     }
@@ -100,26 +121,30 @@ fun FromTo(
 
 @Composable
 fun Year(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onYearButtonClicked: () -> Unit
 ){
     Box {
         Button(
-            onClick = {  },
-
-            ) {
+            onClick = onYearButtonClicked,
+            modifier = modifier
+                .padding(start = 86.dp)
+                .width(106.dp)
+                .height(34.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFDADADA))
+        ) {
             Text(
-                text = ,
-                fontSize = ,
-                fontWeight = ,
+                text = stringResource(id = R.string.Year),
+                color = Color.Black
             )
         }
         Icon(
-            imageVector = ,
+            imageVector = Icons.Outlined.AccessTime,
             contentDescription = null,
-            tint = ,
+            tint = Color(0xFF9B9B9B),
             modifier = modifier
                 .align(Alignment.CenterStart)
-                .padding(start =)
+                .padding(start = 90.dp)
 
         )
     }
@@ -127,26 +152,30 @@ fun Year(
 
 @Composable
 fun Energy(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onEnergyButtonClicked: () -> Unit
 ){
     Box {
         Button(
-            onClick = {  },
-
+            onClick = onEnergyButtonClicked,
+            modifier = modifier
+                .height(34.dp)
+                .width(106.dp) ,
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFDADADA))
             ) {
             Text(
-                text = ,
-                fontSize = ,
-                fontWeight = ,
+                text = stringResource(id = R.string.Energy),
+                fontSize = 13.sp,
+                color = Color.Black,
             )
         }
         Icon(
-            imageVector = ,
+            imageVector = Icons.Outlined.EnergySavingsLeaf,
             contentDescription = null,
-            tint = ,
+            tint = Color(0xFF9B9B9B),
             modifier = modifier
                 .align(Alignment.CenterStart)
-                .padding(start =)
+                .padding(start = 4.dp)
 
         )
     }

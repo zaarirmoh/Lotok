@@ -74,7 +74,7 @@ fun CarPosts(
         contentPadding = PaddingValues(8.dp),
         verticalArrangement = Arrangement.spacedBy(18.dp),
         horizontalArrangement = Arrangement.spacedBy(13.dp),
-        modifier = modifier.height((220*Data.carPosts.size).dp)
+        modifier = modifier.height((220*(Data.carPosts.size/2)).dp)
     ) {
         items(Data.carPosts){
             CarPost(carPostInfo = it)
@@ -150,7 +150,7 @@ fun Rating(
                 imageVector = Icons.Default.Star,
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.primary,
-                modifier = modifier.size(15.dp)
+                modifier = modifier.size(19.dp)
             )
         }
         if(decimalPart!=0.0){
@@ -158,15 +158,16 @@ fun Rating(
                 imageVector = Icons.AutoMirrored.Default.StarHalf,
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.primary,
-                modifier = modifier.size(15.dp)
+                modifier = modifier.size(19.dp)
             )
         }
-        repeat(5-integerPart+1){
+        decimalPart = Math.round(decimalPart).toDouble()
+        repeat((5-integerPart-decimalPart).toInt()){
             Icon(
                 imageVector = Icons.Default.StarBorder,
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.primary,
-                modifier = modifier.size(15.dp)
+                modifier = modifier.size(19.dp)
             )
         }
     }

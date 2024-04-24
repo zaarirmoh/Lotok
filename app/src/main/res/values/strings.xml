@@ -8,5 +8,9 @@
     <string name="Categories">Categories</string>
     <string name="PopularCars">Popular cars</string>
     <string name="BookNow">Book now</string>
+    <string name="State">State</string>
+    <string name="FromTo">From/to</string>
+    <string name="Year">Year</string>
+    <string name="Energy">Energy</string>
 
 </resources>
