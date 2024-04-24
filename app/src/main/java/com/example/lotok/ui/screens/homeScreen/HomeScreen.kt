@@ -1,35 +1,25 @@
 package com.example.lotok.ui.screens.homeScreen
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Search
-import androidx.compose.material3.Button
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.example.lotok.R
 import com.example.lotok.ui.components.datePickers.DateRangePicker
 import com.example.lotok.ui.components.topBar.EndIconNotification
 import com.example.lotok.ui.components.topBar.StartIconMenu
 import com.example.lotok.ui.components.topBar.TopBar
 import com.example.lotok.ui.components.topBar.TopBarCenterLogo
-import com.example.lotok.ui.theme.md_theme_light_onPrimary
 
 
 @Composable
@@ -38,13 +28,16 @@ fun HomeScreen(
     onNotificationIconClicked: () -> Unit = {},
     onMenuIconClicked: () -> Unit = {},
     onSearchForACarButtonClicked: () -> Unit = {},
+    openDialog: MutableState<Boolean>,
+    expendedMenu: MutableState<Boolean>
 ) {
     val navigationBarHeight = 90
-    val openDialog = remember { mutableStateOf(false) }
     Scaffold(
         topBar = {
             TopBar(
-                startIcon = { StartIconMenu(onButtonClicked = onMenuIconClicked) }, //StartIconMenu()
+                startIcon = {
+                    StartIconMenu(onButtonClicked = onMenuIconClicked)
+                    ExpendMenu(expanded = expendedMenu) }, //StartIconMenu()
                 topBarCenter = { TopBarCenterLogo()},   //TopBarCenterText(text = "Home")
                 endIcon = { EndIconNotification(onButtonClicked = onNotificationIconClicked) }
             )
