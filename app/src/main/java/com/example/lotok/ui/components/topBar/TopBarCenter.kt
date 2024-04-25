@@ -23,7 +23,7 @@ fun TopBarCenterText(
 ){
     Text(
         text = text,
-        fontWeight = FontWeight.Bold,
+        fontWeight = FontWeight.ExtraBold,
         modifier = modifier
     )
 }

@@ -15,6 +15,8 @@ import androidx.navigation.compose.rememberNavController
 import com.example.lotok.data.Data
 import com.example.lotok.ui.components.navigationBar.MyNavigationBar
 import com.example.lotok.ui.screens.homeScreen.HomeScreen
+import com.example.lotok.ui.screens.profileDetailsScreens.editProfileScreen.EditProfileScreen
+import com.example.lotok.ui.screens.profileDetailsScreens.profileDetailsScreen.ProfileDetailsScreen
 import com.example.lotok.ui.screens.profileScreen.ProfileScreen
 import com.example.lotok.ui.screens.selectACarScreen.SelectACarScreen
 import com.example.lotok.ui.screens.selectBrandScreen.SelectBrandScreen
@@ -99,7 +101,9 @@ fun LotokNavHost(
             composable(route = LotokScreen.ProfileScreen.name){
                 ProfileScreen(
                     onEditIconClicked = {},
-                    onProfileCardClicked = {},
+                    onProfileCardClicked = {
+                        navController.navigate(LotokScreen.ProfileDetailsScreen.name)
+                    },
                     onCarsPostedCardClicked = {},
                     onSettingsCardClicked = {
                         navController.navigate(LotokScreen.MainSettingsScreen.name)
@@ -110,6 +114,26 @@ fun LotokNavHost(
             composable(route = LotokScreen.MainSettingsScreen.name){
                 MainSettingsScreen(
                     onGoBackButtonClicked = {
+                        navController.navigateUp()
+                    }
+                )
+            }
+            composable(route = LotokScreen.ProfileDetailsScreen.name){
+                ProfileDetailsScreen(
+                    onGoBackButtonClicked = {
+                        navController.navigateUp()
+                    },
+                    onEditButtonClicked = {
+                        navController.navigate(LotokScreen.EditProfileScreen.name)
+                    }
+                )
+            }
+            composable(route = LotokScreen.EditProfileScreen.name){
+                EditProfileScreen(
+                    onGoBackButtonClicked = {
+                        navController.navigateUp()
+                    },
+                    onDoneButtonClicked = {
                         navController.navigateUp()
                     }
                 )

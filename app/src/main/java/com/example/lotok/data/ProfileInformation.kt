@@ -1,18 +1,19 @@
 package com.example.lotok.data
 
 import androidx.annotation.DrawableRes
+import androidx.compose.runtime.MutableState
 import com.example.lotok.R
 data class ProfileInformation(
-    val name: String,
+    var name: String,
     @DrawableRes val picture: Int,
-    val email: String,
-    val carsPosted: Int,
-    val postsSaved: Int,
-    val bookings: Int,
-    val firstName: String? = null,
-    val lastName: String? = null,
-    val location: String? = null,
-    val mobileNumber: String? = null
+    var email: String,
+    var carsPosted: Int,
+    var postsSaved: Int,
+    var bookings: Int,
+    var firstName: String = "",
+    var lastName: String = "",
+    var location: String = "",
+    var mobileNumber: String = "",
 )
 val profileInformation = ProfileInformation(
     name = "Mohamed",
@@ -21,4 +22,8 @@ val profileInformation = ProfileInformation(
     carsPosted = 360,
     postsSaved = 238,
     bookings = 473,
+    firstName = "Mohamed",
+    lastName = "Zaarir",
+    location = "Soumaa",
+    mobileNumber = "0776325625"
 )
