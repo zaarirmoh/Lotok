@@ -1,5 +1,6 @@
 package com.example.lotok.ui.components.navigationBar
 
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -10,6 +11,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import com.example.lotok.ui.theme.GrayNav
@@ -44,11 +46,15 @@ fun MyNavigationBar(
                         } else item.unselectedIcon,
                         contentDescription = item.title,
                         tint = if(index == selectedItemIndex) RedPrimary
-                        else GrayNav
+                        else GrayNav,
+                        modifier = modifier.then(
+                            if(item.title == "Add") modifier.size(42.dp)
+                            else modifier
+                        )
                     )
                 },
                 label = {
-                    Text(text = item.title)
+                    if(item.title != "Add") Text(text = item.title)
                 },
             )
         }

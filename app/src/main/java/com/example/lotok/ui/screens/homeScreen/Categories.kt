@@ -12,6 +12,7 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -22,7 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.lotok.R
-import com.example.lotok.data.categories
+import com.example.lotok.data.Data
 import com.example.lotok.ui.theme.Shapes
 
 @Composable
@@ -38,7 +39,7 @@ fun Categories(
         )
         Spacer(modifier = modifier.height(11.dp))
         LazyRow {
-            items(categories){
+            items(Data.categories){
                 Spacer(modifier = modifier.width(30.dp))
                 CategoryCard(categoryPhoto = it.imgSrc)
             }
@@ -53,7 +54,8 @@ fun CategoryCard(
     Button(
         onClick = { /*TODO*/ },
         shape = Shapes.small,
-        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFBEBEA)),
+        colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+        //colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFBEBEA)),
         modifier = modifier.size(115.dp)
     ) {
         Image(
