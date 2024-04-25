@@ -11,4 +11,8 @@ data class CarPost(
     val weekPrice: Int,
     val rating: Double,
     val description: String? = null,
+    val location : String = "mila" ,
+    val type : String = "manuel" ,
+    val energyType : String = "DZL",
+    val seats : Int = 4
 )

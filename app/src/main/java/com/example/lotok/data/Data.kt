@@ -21,6 +21,7 @@ object Data{
             dayPrice = 4000,
             weekPrice = 12000,
             rating = 3.5,
+            description = " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore . Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore . Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ."
             ),
         CarPost(
             id = id,
