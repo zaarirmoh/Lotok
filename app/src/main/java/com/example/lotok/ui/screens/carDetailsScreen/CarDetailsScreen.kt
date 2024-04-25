@@ -1,6 +1,10 @@
 package com.example.lotok.ui.screens.carDetailsScreen
 
 import android.annotation.SuppressLint
+
+import android.graphics.Paint
+import android.graphics.drawable.shapes.Shape
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -17,11 +21,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.GenericShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -36,11 +42,21 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.drawscope.DrawScope
+import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
+import androidx.compose.ui.graphics.nativeCanvas
+import androidx.compose.ui.graphics.toArgb
+
 import androidx.compose.ui.layout.VerticalAlignmentLine
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.lotok.data.CarPost
@@ -154,14 +170,12 @@ fun NameAndPrice(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            
-
     ) {
 
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 8.dp , end = 8.dp),
+                .padding(start = 8.dp, end = 8.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
@@ -173,12 +187,92 @@ fun NameAndPrice(
 
             Text(
                 text =  dayPrice.toString() + " DZA/day",
-                color = Color.Black,
+                color = Color.Red,
                 fontSize = 20.sp,
                 fontWeight = FontWeight.SemiBold
             )
         }
+
+        Spacer(modifier = Modifier.height(7.dp))
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 12.dp, end = 12.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(
+                text = mark,
+                color = Color(0x9B, 0x9B, 0x9B),
+                fontSize = 13.sp,
+                fontWeight = FontWeight.Normal
+            )
+
+            Text(
+                text =  weekPrice.toString() + " DZA/week",
+                color = Color.Red,
+                fontSize = 13.sp,
+                fontWeight = FontWeight.Normal
+            )
+        }
     }
+}
+
+
+
+
+
+@Composable
+fun StarRating(stars: List<Int>) {
+    val totalStars = stars.sum()
+    val averageRating = totalStars.toFloat() / stars.size
+    val filledStars = averageRating.toInt()
+    val fraction = averageRating - filledStars
+
+    // Draw 5 stars
+    Row {
+        repeat(filledStars) {
+            Icon(
+                imageVector = Icons.Default.Star,
+                contentDescription = null,
+                tint = Color.Red,
+                modifier = Modifier.size(24.dp)
+            )
+        }
+        if (fraction > 0f){
+            if (fraction >= 0.5f) {
+                Icon(
+                imageVector = Icons.Default.Star,
+                contentDescription = null,
+                tint = Color.Red,
+                modifier = Modifier.size(24.dp)
+            )
+            }
+            else {
+                Icon(
+                    imageVector = Icons.Default.Star,
+                    contentDescription = null,
+                    tint = Color.White,
+                    modifier = Modifier.size(24.dp)
+                )
+            }
+        }
+        repeat(5 - filledStars - if (fraction > 0f) 1 else 0) {
+            Icon(
+                imageVector = Icons.Default.Star,
+                contentDescription = null,
+                tint = Color.White,
+                modifier = Modifier.size(24.dp)
+            )
+        }
+    }
+}
+
+
+@Preview
+@Composable
+fun PreviewStarRating() {
+    StarRating(stars = listOf(5, 1, 2, 5))
 }
 
 
@@ -186,7 +280,6 @@ fun NameAndPrice(
 @Preview(showBackground = true)
 fun NameAndPricePreview(){
     NameAndPrice(
-
         name = DataTry.dataCarsList[0].name,
         mark = DataTry.dataCarsList[0].mark,
         dayPrice = DataTry.dataCarsList[0].dayPrice,
