@@ -15,6 +15,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.lotok.data.Data
 import com.example.lotok.ui.components.navigationBar.MyNavigationBar
 import com.example.lotok.ui.screens.homeScreen.HomeScreen
+import com.example.lotok.ui.screens.profileScreen.ProfileScreen
 import com.example.lotok.ui.screens.selectACarScreen.SelectACarScreen
 import com.example.lotok.ui.screens.selectBrandScreen.SelectBrandScreen
 import com.example.lotok.ui.screens.welcomeScreen.WelcomeScreen
@@ -88,6 +89,11 @@ fun LotokNavHost(
                     onGoBackIconClicked = {
                         navController.navigateUp()
                     }
+                )
+            }
+            composable(route = LotokScreen.ProfileScreen.name){
+                ProfileScreen(
+                    onEditIconClicked = {}
                 )
             }
         }

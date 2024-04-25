@@ -53,6 +53,6 @@ val items = listOf(
         unselectedIcon = Icons.Outlined.Person,
         hasNews = false,
         badgeCount = 45,
-        route = LotokScreen.HomeScreen.name
+        route = LotokScreen.ProfileScreen.name
     )
 )

@@ -7,6 +7,8 @@ val RedBackground = Color(0xFFB3261E)
 val RedPrimary = Color(0xFFB3261E)
 val StartIconHomeColor = Color(0xFF1D1B20)
 val GrayNav = Color(0xFF9B9B9B)
+val TryColor = Color(0xFFFDFDFD)
+
 
 
 // Not Sure

@@ -16,7 +16,7 @@ data class ProfileInformation(
 )
 val profileInformation = ProfileInformation(
     name = "Mohamed",
-    picture = R.drawable.baseline_boy_24,
+    picture = R.drawable.profile_picture,
     email = "mr.zaarir@esi-sba.dz",
     carsPosted = 360,
     postsSaved = 238,
