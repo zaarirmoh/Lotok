@@ -14,7 +14,6 @@ import com.example.lotok.ui.components.topBar.EndIconEdit
 import com.example.lotok.ui.components.topBar.StartIconGoBack
 import com.example.lotok.ui.components.topBar.TopBar
 import com.example.lotok.ui.components.topBar.TopBarCenterText
-import com.example.lotok.ui.screens.profileDetailsScreens.ProfileInformationCards
 import com.example.lotok.ui.screens.profileScreen.ProfilePictureAndName
 
 @Composable

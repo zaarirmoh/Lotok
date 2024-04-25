@@ -13,6 +13,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.lotok.data.Data
+import com.example.lotok.data.profileInformation
 import com.example.lotok.ui.components.navigationBar.MyNavigationBar
 import com.example.lotok.ui.screens.homeScreen.HomeScreen
 import com.example.lotok.ui.screens.profileDetailsScreens.editProfileScreen.EditProfileScreen
@@ -34,6 +35,11 @@ fun LotokNavHost(
     val backStackEntry by navController.currentBackStackEntryAsState()
     val expandedMenu = remember { mutableStateOf(false)}
     val openDialog = remember { mutableStateOf(false)}
+    val newFirstName = remember { mutableStateOf(profileInformation.firstName) }
+    val newLastName = remember{ mutableStateOf(profileInformation.lastName) }
+    val newEmail = remember { mutableStateOf(profileInformation.email) }
+    val newLocation = remember { mutableStateOf(profileInformation.location) }
+    val newMobileNumber = remember { mutableStateOf(profileInformation.mobileNumber) }
     // Get the name of the current screen
     val currentScreen = LotokScreen.valueOf(
         backStackEntry?.destination?.route ?: LotokScreen.WelcomeScreen.name
@@ -131,11 +137,26 @@ fun LotokNavHost(
             composable(route = LotokScreen.EditProfileScreen.name){
                 EditProfileScreen(
                     onGoBackButtonClicked = {
+                        newFirstName.value = profileInformation.firstName
+                        newLastName.value = profileInformation.lastName
+                        newEmail.value = profileInformation.email
+                        newLocation.value = profileInformation.location
+                        newMobileNumber.value = profileInformation.mobileNumber
                         navController.navigateUp()
                     },
                     onDoneButtonClicked = {
+                        profileInformation.firstName = newFirstName.value
+                        profileInformation.lastName = newLastName.value
+                        profileInformation.email = newEmail.value
+                        profileInformation.location = newLocation.value
+                        profileInformation.mobileNumber = newMobileNumber.value
                         navController.navigateUp()
-                    }
+                    },
+                    newFirstName = newFirstName,
+                    newLastName = newLastName,
+                    newEmail = newEmail,
+                    newLocation = newLocation,
+                    newMobileNumber = newMobileNumber
                 )
             }
         }
