@@ -13,7 +13,8 @@ import androidx.compose.ui.Modifier
 @Composable
 fun ExpendMenu(
     modifier: Modifier = Modifier,
-    expanded: MutableState<Boolean>
+    expanded: MutableState<Boolean>,
+    onSettingsClicked: () -> Unit = {}
 ){
     DropdownMenu(
         expanded = expanded.value,
@@ -21,7 +22,7 @@ fun ExpendMenu(
     ) {
         DropdownMenuItem(
             text = { Text(text = "Settings")},
-            onClick = { /* Handle settings! */ },
+            onClick = onSettingsClicked,
             leadingIcon = {
                 Icon(
                     Icons.Outlined.Settings,

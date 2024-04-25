@@ -18,6 +18,7 @@ import com.example.lotok.ui.screens.homeScreen.HomeScreen
 import com.example.lotok.ui.screens.profileScreen.ProfileScreen
 import com.example.lotok.ui.screens.selectACarScreen.SelectACarScreen
 import com.example.lotok.ui.screens.selectBrandScreen.SelectBrandScreen
+import com.example.lotok.ui.screens.settingsScreens.mainSettingsScreen.MainSettingsScreen
 import com.example.lotok.ui.screens.welcomeScreen.WelcomeScreen
 
 
@@ -67,6 +68,10 @@ fun LotokNavHost(
                     onSearchForACarButtonClicked = {
                         navController.navigate(LotokScreen.SelectBrandScreen.name)
                     },
+                    onSettingsClicked = {
+                        expandedMenu.value = false
+                        navController.navigate(LotokScreen.MainSettingsScreen.name)
+                    },
                     openDialog = openDialog,
                     expendedMenu = expandedMenu
                 )
@@ -93,7 +98,20 @@ fun LotokNavHost(
             }
             composable(route = LotokScreen.ProfileScreen.name){
                 ProfileScreen(
-                    onEditIconClicked = {}
+                    onEditIconClicked = {},
+                    onProfileCardClicked = {},
+                    onCarsPostedCardClicked = {},
+                    onSettingsCardClicked = {
+                        navController.navigate(LotokScreen.MainSettingsScreen.name)
+                    },
+                    onVersionCardClicked = {},
+                )
+            }
+            composable(route = LotokScreen.MainSettingsScreen.name){
+                MainSettingsScreen(
+                    onGoBackButtonClicked = {
+                        navController.navigateUp()
+                    }
                 )
             }
         }

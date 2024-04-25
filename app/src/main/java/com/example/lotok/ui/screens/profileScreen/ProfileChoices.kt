@@ -34,12 +34,17 @@ import com.example.lotok.ui.theme.Shapes
 
 @Composable
 fun ProfileChoices(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onProfileCardClicked: () -> Unit,
+    onCarsPostedCardClicked: () -> Unit,
+    onSettingsCardClicked: () -> Unit,
+    onVersionCardClicked: () -> Unit,
 ){
     Column {
         ProfileChoice(
             profileChoiceIcon = Icons.Outlined.Person,
-            profileChoice = "Profile"
+            profileChoice = "Profile",
+            onNextIconClicked = onProfileCardClicked
         )
         Spacer(modifier = modifier.height(5.dp))
         Divider(
@@ -49,7 +54,8 @@ fun ProfileChoices(
         Spacer(modifier = modifier.height(5.dp))
         ProfileChoice(
             profileChoiceIcon = Icons.Outlined.Person,
-            profileChoice = "Cars posted"
+            profileChoice = "Cars posted",
+            onNextIconClicked = onCarsPostedCardClicked
         )
         Spacer(modifier = modifier.height(5.dp))
         Divider(
@@ -59,7 +65,8 @@ fun ProfileChoices(
         Spacer(modifier = modifier.height(5.dp))
         ProfileChoice(
             profileChoiceIcon = Icons.Outlined.Settings,
-            profileChoice = "Settings"
+            profileChoice = "Settings",
+            onNextIconClicked = onSettingsCardClicked
         )
         Spacer(modifier = modifier.height(5.dp))
         Divider(
@@ -69,7 +76,8 @@ fun ProfileChoices(
         Spacer(modifier = modifier.height(5.dp))
         ProfileChoice(
             profileChoiceIcon = Icons.Outlined.TravelExplore,
-            profileChoice = "Version"
+            profileChoice = "Version",
+            onNextIconClicked = onVersionCardClicked
         )
         Spacer(modifier = modifier.height(5.dp))
         Divider(
@@ -94,37 +102,33 @@ fun ProfileChoice(
         modifier = modifier.height(50.dp)
     ) {
         Spacer(modifier = modifier.height(15.dp))
-        Column(
-            verticalArrangement = Arrangement.Center
+        Row(
+            modifier = modifier.fillMaxWidth()
         ) {
+            Spacer(modifier = modifier.width(34.dp))
+            Icon(
+                imageVector = profileChoiceIcon,
+                contentDescription = null,
+                tint = Color(0xFF7D848D)
+            )
+            Spacer(modifier = modifier.width(14.dp))
+            Text(
+                text = profileChoice,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Medium
+            )
             Row(
+                horizontalArrangement = Arrangement.End,
                 modifier = modifier.fillMaxWidth()
             ) {
-                Spacer(modifier = modifier.width(34.dp))
+
                 Icon(
-                    imageVector = profileChoiceIcon,
+                    imageVector = Icons.Rounded.ChevronRight,
                     contentDescription = null,
+                    modifier = modifier.padding(end = 47.dp),
                     tint = Color(0xFF7D848D)
                 )
-                Spacer(modifier = modifier.width(14.dp))
-                Text(
-                    text = profileChoice,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Medium
-                )
-                Row(
-                    horizontalArrangement = Arrangement.End,
-                    modifier = modifier.fillMaxWidth()
-                ) {
 
-                        Icon(
-                            imageVector = Icons.Rounded.ChevronRight,
-                            contentDescription = null,
-                            modifier = modifier.padding(end = 47.dp),
-                            tint = Color(0xFF7D848D)
-                        )
-
-                }
             }
         }
     }

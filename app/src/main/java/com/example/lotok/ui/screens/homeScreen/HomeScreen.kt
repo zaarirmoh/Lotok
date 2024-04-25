@@ -29,7 +29,8 @@ fun HomeScreen(
     onMenuIconClicked: () -> Unit = {},
     onSearchForACarButtonClicked: () -> Unit = {},
     openDialog: MutableState<Boolean>,
-    expendedMenu: MutableState<Boolean>
+    expendedMenu: MutableState<Boolean>,
+    onSettingsClicked: () -> Unit = {}
 ) {
     val navigationBarHeight = 90
     Scaffold(
@@ -37,7 +38,10 @@ fun HomeScreen(
             TopBar(
                 startIcon = {
                     StartIconMenu(onButtonClicked = onMenuIconClicked)
-                    ExpendMenu(expanded = expendedMenu) }, //StartIconMenu()
+                    ExpendMenu(
+                        expanded = expendedMenu,
+                        onSettingsClicked = onSettingsClicked
+                    ) }, //StartIconMenu()
                 topBarCenter = { TopBarCenterLogo()},   //TopBarCenterText(text = "Home")
                 endIcon = { EndIconNotification(onButtonClicked = onNotificationIconClicked) }
             )

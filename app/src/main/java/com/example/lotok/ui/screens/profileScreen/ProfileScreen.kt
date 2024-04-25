@@ -2,12 +2,10 @@ package com.example.lotok.ui.screens.profileScreen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.lotok.ui.components.topBar.EndIconEdit
@@ -17,7 +15,11 @@ import com.example.lotok.ui.components.topBar.TopBarCenterText
 @Composable
 fun ProfileScreen(
     modifier: Modifier = Modifier,
-    onEditIconClicked: () -> Unit
+    onEditIconClicked: () -> Unit,
+    onProfileCardClicked: () -> Unit,
+    onCarsPostedCardClicked: () -> Unit,
+    onSettingsCardClicked: () -> Unit,
+    onVersionCardClicked: () -> Unit,
 ){
     Scaffold(
         topBar = {
@@ -35,7 +37,12 @@ fun ProfileScreen(
             Spacer(modifier = modifier.height(30.dp))
             ProfileStatistics()
             Spacer(modifier = modifier.height(30.dp))
-            ProfileChoices()
+            ProfileChoices(
+                onProfileCardClicked = onProfileCardClicked,
+                onCarsPostedCardClicked = onCarsPostedCardClicked,
+                onSettingsCardClicked = onSettingsCardClicked,
+                onVersionCardClicked = onVersionCardClicked
+            )
         }
     }
 }
