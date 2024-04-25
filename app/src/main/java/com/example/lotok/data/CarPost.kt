@@ -1,7 +1,5 @@
 package com.example.lotok.data
 
-
-
 data class CarPost(
     val id: Int,
     val imgSrc: List<Int>,

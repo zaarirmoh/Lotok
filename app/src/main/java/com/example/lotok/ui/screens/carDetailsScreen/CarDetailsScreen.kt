@@ -46,7 +46,7 @@ import com.example.lotok.ui.components.topBar.TopBarCenterText
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun CarDetailsScreen(
-    carInfo : CarPost ,
+    carInfo : CarPost,
     onGoBackIconClicked: () -> Unit = {}
 ){
     Scaffold(
