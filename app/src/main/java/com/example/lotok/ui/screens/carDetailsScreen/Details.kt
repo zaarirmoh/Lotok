@@ -72,10 +72,10 @@ fun Details(
 @Preview(showBackground = true)
 fun DetailsPriview(){
     Details(
-        energyType = Data.carPostsList[0].energyType,
-        seats = Data.carPostsList[0].seats,
+        energyType = Data.carPostsList[0].fuel,
+        seats = Data.carPostsList[0].power.toInt(),
         engine = Data.carPostsList[0].engine,
-        type = Data.carPostsList[0].type,
+        type = Data.carPostsList[0].transmission,
         location = Data.carPostsList[0].location
     )
 }

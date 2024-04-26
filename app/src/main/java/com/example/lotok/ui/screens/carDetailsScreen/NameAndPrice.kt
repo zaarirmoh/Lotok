@@ -80,8 +80,8 @@ fun NameAndPrice(
 @Preview(showBackground = true)
 fun NameAndPricePreview(){
     NameAndPrice(
-        name = Data.carPostsList[0].name,
-        mark = Data.carPostsList[0].mark,
+        name = Data.carPostsList[0].model,
+        mark = Data.carPostsList[0].make,
         dayPrice = Data.carPostsList[0].dayPrice,
         weekPrice = Data.carPostsList[0].weekPrice
     )
