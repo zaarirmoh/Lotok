@@ -78,7 +78,8 @@ fun EmailTextField(
 }
 @Composable
 fun PasswordTextField(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    supportingText: String = ""
 ){
     val keyboardController = LocalSoftwareKeyboardController.current
     var text1 by rememberSaveable { mutableStateOf("") }
@@ -104,6 +105,9 @@ fun PasswordTextField(
         }),
         visualTransformation =
         if (passwordHidden) PasswordVisualTransformation() else VisualTransformation.None,
+        supportingText = {
+            Text(text = supportingText, color = Color(0xFF7D848D))
+        },
         modifier = modifier.fillMaxWidth()
     )
 

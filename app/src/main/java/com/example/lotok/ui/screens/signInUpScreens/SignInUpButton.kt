@@ -1,4 +1,4 @@
-package com.example.lotok.ui.screens.signInUpScreens.singUpScreen
+package com.example.lotok.ui.screens.signInUpScreens
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -11,9 +11,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun SignUpButton(
+fun SignInUpButton(
     modifier: Modifier = Modifier,
     onSignInButtonClicked: () -> Unit = {},
+    text: String
 ){
     Button(
         onClick = onSignInButtonClicked,
@@ -23,7 +24,7 @@ fun SignUpButton(
             .height(56.dp)
     ) {
         Text(
-            text = "SignUp",
+            text = text,
             color = MaterialTheme.colorScheme.surface
         )
     }

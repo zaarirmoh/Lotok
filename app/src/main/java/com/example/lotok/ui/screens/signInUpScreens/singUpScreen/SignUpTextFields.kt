@@ -41,7 +41,7 @@ fun SignUpTextFields(
         Spacer(modifier = modifier.height(20.dp))
         EmailTextField()
         Spacer(modifier = modifier.height(20.dp))
-        PasswordTextField()
+        PasswordTextField(supportingText = "example: At least 8 characters")
     }
 }
 @Composable

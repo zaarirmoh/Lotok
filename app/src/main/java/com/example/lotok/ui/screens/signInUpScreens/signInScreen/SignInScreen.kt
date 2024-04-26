@@ -15,6 +15,8 @@ import com.example.lotok.ui.components.topBar.StartIconGoBack
 import com.example.lotok.ui.components.topBar.TopBar
 import com.example.lotok.ui.screens.signInUpScreens.SignInGoogleFacebook
 import com.example.lotok.ui.screens.signInUpScreens.SignInUPTitle
+import com.example.lotok.ui.screens.signInUpScreens.SignInUpButton
+import com.example.lotok.ui.screens.signInUpScreens.SignInUpText
 
 @Composable
 fun SignInScreen(
@@ -41,11 +43,14 @@ fun SignInScreen(
             Spacer(modifier = modifier.height(10.dp))
             ForgotPasswordTextButton()
             Spacer(modifier = modifier.height(40.dp))
-            SignInButton()
+            SignInUpButton(text = "Sign In")
             Spacer(modifier = modifier.height(40.dp))
+            SignInUpText(text = "Sign Up")
             Column(
                 verticalArrangement = Arrangement.Bottom,
-                modifier = modifier.padding(bottom = 30.dp).fillMaxHeight()
+                modifier = modifier
+                    .padding(bottom = 30.dp)
+                    .fillMaxHeight()
             ) {
                 SignInGoogleFacebook()
             }
