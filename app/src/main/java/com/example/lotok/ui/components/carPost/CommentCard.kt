@@ -20,7 +20,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -32,7 +31,7 @@ import com.example.lotok.R
 @Composable
 fun CommentCard(
     modifier: Modifier = Modifier,
-    profilePic: Painter,
+    profilePic: Int,
     title: String,
     date: String,
     review: String,
@@ -72,7 +71,7 @@ fun CommentCard(
         }
 
         Image(
-            painter = profilePic,
+            painter = painterResource(profilePic),
             contentDescription = "Profile Picture",
             modifier = Modifier
                 .size(48.dp)
@@ -87,7 +86,7 @@ fun CommentCard(
 @Composable
 fun PreviewReviewCard() {
     CommentCard(
-        profilePic = painterResource(id = R.drawable.red_car),
+        profilePic = R.drawable.profile_picture,
         title = "El Bench",
         date = "June 5, 2019",
         review = "good. but I prefer Atos.",

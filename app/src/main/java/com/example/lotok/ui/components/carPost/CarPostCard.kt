@@ -112,7 +112,7 @@ fun Rating(
             Icon(
                 imageVector = Icons.Default.Star,
                 contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary,
+                tint = Color(0xD7,23,23),
                 modifier = modifier.size(19.dp)
             )
         }
@@ -120,7 +120,7 @@ fun Rating(
             Icon(
                 imageVector = Icons.AutoMirrored.Default.StarHalf,
                 contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary,
+                tint = Color(0xD7,23,23),
                 modifier = modifier.size(19.dp)
             )
         }
@@ -129,7 +129,7 @@ fun Rating(
             Icon(
                 imageVector = Icons.Default.StarBorder,
                 contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary,
+                tint = Color(0xD7,23,23),
                 modifier = modifier.size(19.dp)
             )
         }

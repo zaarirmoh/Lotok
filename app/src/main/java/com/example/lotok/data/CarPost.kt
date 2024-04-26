@@ -14,5 +14,9 @@ data class CarPost(
     val location : String = "mila" ,
     val type : String = "manuel" ,
     val energyType : String = "DZL",
-    val seats : Int = 4
+    val seats : Int = 4,
+
 )
+
+
+
