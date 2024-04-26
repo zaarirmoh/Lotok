@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -20,7 +21,8 @@ import com.example.lotok.data.profileInformation
 
 @Composable
 fun ProfilePictureAndName(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    secondTextComposable: @Composable () -> Unit = { ProfileSecondText() }
 ){
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -40,10 +42,21 @@ fun ProfilePictureAndName(
             fontWeight = FontWeight.Bold
         )
         Spacer(modifier = modifier.height(4.dp))
-        Text(
-            text = profileInformation.email,
-            fontSize = 14.sp,
-            fontWeight = FontWeight.Normal
-        )
+        secondTextComposable()
     }
+}
+@Composable
+fun ProfileSecondText(
+    modifier: Modifier = Modifier,
+    secondTextFontWeight: FontWeight = FontWeight.Normal,
+    secondTextColor: Color = Color(0xFF7D848D),
+    secondText: String = profileInformation.email,
+){
+    Text(
+        text = secondText,
+        fontSize = 14.sp,
+        fontWeight = secondTextFontWeight,
+        color = secondTextColor,
+        modifier = modifier
+    )
 }

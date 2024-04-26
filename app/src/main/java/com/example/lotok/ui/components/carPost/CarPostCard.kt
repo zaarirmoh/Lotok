@@ -80,7 +80,7 @@ fun CarPostCard(
             }
             Spacer(modifier = modifier.height(4.dp))
             Text(
-                text = carPostInfo.mark + " " + carPostInfo.name,
+                text = carPostInfo.make + " " + carPostInfo.model,
                 fontWeight = FontWeight.Bold,
                 fontSize = 12.sp,
                 modifier = modifier.padding(start = 8.dp)
