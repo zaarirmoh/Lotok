@@ -15,5 +15,6 @@ enum class LotokScreen(
     MainSettingsScreen(false),
     ProfileDetailsScreen(false),
     EditProfileScreen(false),
-    SignInScreen(false)
+    SignInScreen(false),
+    SignUpScreen(false)
 }

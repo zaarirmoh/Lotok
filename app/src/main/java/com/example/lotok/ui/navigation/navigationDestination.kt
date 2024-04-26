@@ -23,6 +23,7 @@ import com.example.lotok.ui.screens.selectACarScreen.SelectACarScreen
 import com.example.lotok.ui.screens.selectBrandScreen.SelectBrandScreen
 import com.example.lotok.ui.screens.settingsScreens.mainSettingsScreen.MainSettingsScreen
 import com.example.lotok.ui.screens.signInUpScreens.signInScreen.SignInScreen
+import com.example.lotok.ui.screens.signInUpScreens.singUpScreen.SignUpScreen
 import com.example.lotok.ui.screens.welcomeScreen.WelcomeScreen
 
 
@@ -59,7 +60,7 @@ fun LotokNavHost(
     ) {
         NavHost(
             navController = navController,
-            startDestination = LotokScreen.SignInScreen.name,
+            startDestination = LotokScreen.SignUpScreen.name,
             modifier = modifier
         ) {
             composable(route = LotokScreen.WelcomeScreen.name){
@@ -162,6 +163,9 @@ fun LotokNavHost(
             }
             composable(route = LotokScreen.SignInScreen.name){
                 SignInScreen()
+            }
+            composable(route = LotokScreen.SignUpScreen.name){
+                SignUpScreen()
             }
         }
     }
