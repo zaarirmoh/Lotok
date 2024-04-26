@@ -5,12 +5,17 @@ package com.example.lotok.data
 data class CarPost(
     val id: Int,
     val imgSrc: List<Int>,
-    val name: String,
+    val model: String,
     val year: Int,
-    val mark: String,
+    val make: String,
     val engine: String,
+    val power: String,
+    val body: String,
+    val fuel: String,
+    val transmission: String,
     val dayPrice: Int,
     val weekPrice: Int,
     val rating: Double,
     val description: String? = null,
+    val location: String
 )

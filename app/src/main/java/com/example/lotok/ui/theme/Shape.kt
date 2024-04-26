@@ -11,3 +11,6 @@ val Shapes = Shapes(
     medium = RoundedCornerShape(bottomStart = 16.dp, topEnd = 16.dp),
     large = CutCornerShape(topStart = 0.dp)
 )
+val SignInUpCardShapes = Shapes(
+    medium = RoundedCornerShape(24.dp)
+)
