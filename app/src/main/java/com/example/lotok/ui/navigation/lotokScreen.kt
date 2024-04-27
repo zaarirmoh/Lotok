@@ -18,7 +18,6 @@ enum class LotokScreen(
     SignInScreen(false),
     SignUpScreen(false),
     CarDetailsScreen(false),
-    SignUpScreen(false),
     ForgotPasswordScreen(false),
     OTPVerificationScreen(false)
 }
