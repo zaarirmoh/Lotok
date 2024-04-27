@@ -62,7 +62,7 @@ fun LotokNavHost(
     ) {
         NavHost(
             navController = navController,
-            startDestination = LotokScreen.OTPVerificationScreen.name,
+            startDestination = LotokScreen.SignInScreen.name,
             modifier = modifier
         ) {
             composable(route = LotokScreen.WelcomeScreen.name){
