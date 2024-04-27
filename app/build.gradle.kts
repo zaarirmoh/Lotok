@@ -64,7 +64,6 @@ dependencies {
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.material.icons.extended)
 
-
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -73,10 +72,20 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
-    implementation("com.google.android.gms:play-services-auth:21.1.0")
+    //fire-base implementation
+    implementation(libs.firebase.auth.ktx)
 
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
-    implementation("io.coil-kt:coil-compose:2.4.0")
+    //google-sign-in implementation
+    implementation(libs.play.services.auth)
+
+    //retrofit and serialization implementation
+    implementation(libs.retrofit2.kotlinx.serialization.converter)
+    implementation(libs.retrofit)
+    implementation(libs.coil.compose)
+    implementation(libs.kotlinx.serialization.json)
+
+
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.coil.compose)
 }
