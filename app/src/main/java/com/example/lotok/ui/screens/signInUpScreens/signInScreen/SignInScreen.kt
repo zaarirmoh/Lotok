@@ -8,20 +8,21 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.lotok.ui.components.topBar.StartIconGoBack
 import com.example.lotok.ui.components.topBar.TopBar
-import com.example.lotok.ui.screens.signInUpScreens.SignInGoogleFacebook
-import com.example.lotok.ui.screens.signInUpScreens.SignInUPTitle
-import com.example.lotok.ui.screens.signInUpScreens.SignInUpButton
-import com.example.lotok.ui.screens.signInUpScreens.SignInUpText
+import com.example.lotok.ui.screens.signInUpScreens.signInUpComponents.SignInGoogleFacebook
+import com.example.lotok.ui.screens.signInUpScreens.signInUpComponents.SignInUPTitle
+import com.example.lotok.ui.screens.signInUpScreens.signInUpComponents.SignInUpButton
+import com.example.lotok.ui.screens.signInUpScreens.signInUpComponents.SignInUpText
 
 @Composable
 fun SignInScreen(
     modifier: Modifier = Modifier,
-    onGoBackButtonClicked: () -> Unit = {}
+    onGoBackButtonClicked: () -> Unit = {},
+    onSignInTextClicked: () -> Unit = {},
+    onForgotPasswordTextClicked: () -> Unit
 ){
     Scaffold(
         topBar = {
@@ -33,28 +34,28 @@ fun SignInScreen(
         Column(
             modifier = modifier.padding(it)
         ) {
-            Spacer(modifier = modifier.height(75.dp))
+            Spacer(modifier = modifier.height(65.dp))
             SignInUPTitle(
                 title = "Sign In Now",
                 description = "Please sign in to continue to our app"
             )
             Spacer(modifier = modifier.height(50.dp))
-            SignInTextFields()
-            Spacer(modifier = modifier.height(10.dp))
-            ForgotPasswordTextButton()
+            SignInTextFields(onForgotPasswordTextClicked = onForgotPasswordTextClicked)
             Spacer(modifier = modifier.height(40.dp))
             SignInUpButton(text = "Sign In")
-            Spacer(modifier = modifier.height(40.dp))
-            SignInUpText(text = "Sign Up")
             Column(
                 verticalArrangement = Arrangement.Bottom,
                 modifier = modifier
                     .padding(bottom = 30.dp)
                     .fillMaxHeight()
             ) {
+                SignInUpText(
+                    text = "Sign Up",
+                    onTextClicked = onSignInTextClicked
+                )
+                Spacer(modifier = modifier.height(40.dp))
                 SignInGoogleFacebook()
             }
-
         }
     }
 }

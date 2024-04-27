@@ -22,6 +22,8 @@ import com.example.lotok.ui.screens.profileScreen.ProfileScreen
 import com.example.lotok.ui.screens.selectACarScreen.SelectACarScreen
 import com.example.lotok.ui.screens.selectBrandScreen.SelectBrandScreen
 import com.example.lotok.ui.screens.settingsScreens.mainSettingsScreen.MainSettingsScreen
+import com.example.lotok.ui.screens.signInUpScreens.forgotPasswordScreen.ForgotPasswordScreen
+import com.example.lotok.ui.screens.signInUpScreens.otpVerificationScreen.OTPVerificationScreen
 import com.example.lotok.ui.screens.signInUpScreens.signInScreen.SignInScreen
 import com.example.lotok.ui.screens.signInUpScreens.singUpScreen.SignUpScreen
 import com.example.lotok.ui.screens.welcomeScreen.WelcomeScreen
@@ -60,7 +62,7 @@ fun LotokNavHost(
     ) {
         NavHost(
             navController = navController,
-            startDestination = LotokScreen.SignUpScreen.name,
+            startDestination = LotokScreen.OTPVerificationScreen.name,
             modifier = modifier
         ) {
             composable(route = LotokScreen.WelcomeScreen.name){
@@ -162,10 +164,37 @@ fun LotokNavHost(
                 )
             }
             composable(route = LotokScreen.SignInScreen.name){
-                SignInScreen()
+                SignInScreen(
+                    onSignInTextClicked = {
+                        navController.navigate(LotokScreen.SignUpScreen.name)
+                    },
+                    onForgotPasswordTextClicked = {
+                        navController.navigate(LotokScreen.ForgotPasswordScreen.name)
+                    },
+                    onGoBackButtonClicked = {
+                        navController.navigateUp()
+                    }
+                )
             }
             composable(route = LotokScreen.SignUpScreen.name){
-                SignUpScreen()
+                SignUpScreen(
+                    onSignUPTextClicked = {
+                        navController.navigate(LotokScreen.SignInScreen.name)
+                    },
+                    onGoBackButtonClicked = {
+                        navController.navigateUp()
+                    }
+                )
+            }
+            composable(route = LotokScreen.ForgotPasswordScreen.name){
+                ForgotPasswordScreen(
+                    onGoBackButtonClicked = {
+                        navController.navigateUp()
+                    }
+                )
+            }
+            composable(route = LotokScreen.OTPVerificationScreen.name){
+                OTPVerificationScreen()
             }
         }
     }

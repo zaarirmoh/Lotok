@@ -28,7 +28,7 @@ import com.example.lotok.ui.screens.signInUpScreens.signInScreen.PasswordTextFie
 
 @Composable
 fun SignUpTextFields(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ){
 
 
@@ -41,7 +41,7 @@ fun SignUpTextFields(
         Spacer(modifier = modifier.height(20.dp))
         EmailTextField()
         Spacer(modifier = modifier.height(20.dp))
-        PasswordTextField(supportingText = "example: At least 8 characters")
+        PasswordTextField(supportingText = { Text(text = "example: At least 8 characters") })
     }
 }
 @Composable

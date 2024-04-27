@@ -1,9 +1,8 @@
-package com.example.lotok.ui.screens.signInUpScreens.singUpScreen
+package com.example.lotok.ui.screens.signInUpScreens.forgotPasswordScreen
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -14,17 +13,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.lotok.ui.components.topBar.StartIconGoBack
 import com.example.lotok.ui.components.topBar.TopBar
-import com.example.lotok.ui.screens.signInUpScreens.signInUpComponents.SignInGoogleFacebook
+import com.example.lotok.ui.screens.signInUpScreens.signInScreen.EmailTextField
 import com.example.lotok.ui.screens.signInUpScreens.signInUpComponents.SignInUPTitle
 import com.example.lotok.ui.screens.signInUpScreens.signInUpComponents.SignInUpButton
-import com.example.lotok.ui.screens.signInUpScreens.signInUpComponents.SignInUpText
 
 @Composable
-fun SignUpScreen(
+fun ForgotPasswordScreen(
     modifier: Modifier = Modifier,
     onGoBackButtonClicked: () -> Unit = {},
-    onSignUPTextClicked: () -> Unit = {},
-    openServiceProviderDialog: MutableState<Boolean> = mutableStateOf(false)
+    isCheckEmailDialogOpen: MutableState<Boolean> = mutableStateOf(false)
 ){
     Scaffold(
         topBar = {
@@ -33,38 +30,27 @@ fun SignUpScreen(
             )
         }
     ) {
-        WantToBecomeServiceProviderDialog(openDialog = openServiceProviderDialog)
+        ForgotPasswordAlertDialog(openDialog = isCheckEmailDialogOpen)
         Column(
-            modifier = modifier.padding(it)
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(start = 20.dp, end = 20.dp)
+                .padding(it)
         ) {
             Spacer(modifier = modifier.height(65.dp))
             SignInUPTitle(
-                title = "Sign Up Now",
-                description = "Please fill the details and create an account"
+                title = "Forgot password",
+                description = "enter your email account to reset your password"
             )
             Spacer(modifier = modifier.height(50.dp))
-            SignUpTextFields()
+            EmailTextField()
             Spacer(modifier = modifier.height(40.dp))
             SignInUpButton(
-                text = "Sign Up",
+                text = "Reset password",
                 onSignInButtonClicked = {
-                    openServiceProviderDialog.value = true
+                    isCheckEmailDialogOpen.value = true
                 }
             )
-            Column(
-                verticalArrangement = Arrangement.Bottom,
-                modifier = modifier
-                    .padding(bottom = 30.dp)
-                    .fillMaxHeight()
-            ) {
-                SignInUpText(
-                    text = "Sign In",
-                    onTextClicked = onSignUPTextClicked
-                )
-                Spacer(modifier = modifier.height(40.dp))
-                SignInGoogleFacebook()
-            }
-
         }
     }
 }

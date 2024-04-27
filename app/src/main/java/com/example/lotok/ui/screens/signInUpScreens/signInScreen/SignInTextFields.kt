@@ -32,10 +32,9 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun SignInTextFields(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onForgotPasswordTextClicked: () -> Unit
 ){
-
-
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -43,7 +42,9 @@ fun SignInTextFields(
     ){
         EmailTextField()
         Spacer(modifier = modifier.height(20.dp))
-        PasswordTextField()
+        PasswordTextField(supportingText = {
+            ForgotPasswordTextButton(onForgotPasswordButtonClicked = onForgotPasswordTextClicked)
+        })
     }
 }
 @Composable
@@ -79,7 +80,13 @@ fun EmailTextField(
 @Composable
 fun PasswordTextField(
     modifier: Modifier = Modifier,
-    supportingText: String = ""
+    supportingText: @Composable () -> Unit = {
+        Text(
+            text = "",
+            color = Color(0xFF7D848D),
+        )
+    }
+
 ){
     val keyboardController = LocalSoftwareKeyboardController.current
     var text1 by rememberSaveable { mutableStateOf("") }
@@ -105,9 +112,7 @@ fun PasswordTextField(
         }),
         visualTransformation =
         if (passwordHidden) PasswordVisualTransformation() else VisualTransformation.None,
-        supportingText = {
-            Text(text = supportingText, color = Color(0xFF7D848D))
-        },
+        supportingText = supportingText,
         modifier = modifier.fillMaxWidth()
     )
 

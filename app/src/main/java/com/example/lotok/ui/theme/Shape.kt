@@ -1,5 +1,6 @@
 package com.example.lotok.ui.theme
 
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Shapes
@@ -12,5 +13,6 @@ val Shapes = Shapes(
     large = CutCornerShape(topStart = 0.dp)
 )
 val SignInUpCardShapes = Shapes(
-    medium = RoundedCornerShape(24.dp)
+    medium = RoundedCornerShape(24.dp),
+    small = CircleShape
 )

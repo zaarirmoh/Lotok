@@ -1,4 +1,4 @@
-package com.example.lotok.ui.screens.signInUpScreens
+package com.example.lotok.ui.screens.signInUpScreens.signInUpComponents
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -37,7 +38,8 @@ fun SignInUPTitle(
             text = description,
             fontSize = 16.sp,
             fontWeight = FontWeight.Medium,
-            color = Color(0xFF7D848D)
+            color = Color(0xFF7D848D),
+            textAlign = TextAlign.Center
         )
     }
 }
