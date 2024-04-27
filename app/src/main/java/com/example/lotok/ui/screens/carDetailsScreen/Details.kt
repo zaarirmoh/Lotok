@@ -21,7 +21,7 @@ import com.example.lotok.data.Data
 fun Details(
     modifier: Modifier = Modifier,
     energyType : String,
-    seats : Int,
+    seats : String,
     engine : String,
     type : String,
     location : String
@@ -29,7 +29,7 @@ fun Details(
 ) {
     val details = listOf(
         "Energy Type" to energyType,
-        "Seats" to seats.toString(),
+        "Seats" to seats,
         "Engine" to engine,
         "Type" to type,
         "Location" to location
@@ -70,10 +70,10 @@ fun Details(
 
 @Composable
 @Preview(showBackground = true)
-fun DetailsPriview(){
+fun DetailsPreview(){
     Details(
         energyType = Data.carPostsList[0].fuel,
-        seats = Data.carPostsList[0].power.toInt(),
+        seats = Data.carPostsList[0].power,
         engine = Data.carPostsList[0].engine,
         type = Data.carPostsList[0].transmission,
         location = Data.carPostsList[0].location

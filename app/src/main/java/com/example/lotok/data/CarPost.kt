@@ -17,5 +17,6 @@ data class CarPost(
     val weekPrice: Int,
     val rating: Double,
     val description: String? = null,
-    val location: String
+    val location: String ,
+    val comments : List<Comment> = listOf()
 )
