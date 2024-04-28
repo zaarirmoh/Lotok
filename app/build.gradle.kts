@@ -21,6 +21,9 @@ android {
         }
     }
 
+
+
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -46,6 +49,7 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+
         }
     }
 }
@@ -63,7 +67,14 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.material.icons.extended)
+    implementation ("androidx.datastore:datastore-preferences:1.1.0")
+    implementation(libs.transport.runtime)
 
+
+
+
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

@@ -53,7 +53,7 @@ fun RatingBar(ratings : List<Int>,modifier: Modifier = Modifier) {
 
             Spacer(modifier = Modifier.width(28.dp))
 
-            Column {
+            Column{
                 ratings.indices.reversed().forEach { index ->
                     Row(
                         modifier = Modifier.fillMaxWidth(),
@@ -67,19 +67,21 @@ fun RatingBar(ratings : List<Int>,modifier: Modifier = Modifier) {
                             color = Color(0xFF, 0xBA, 0x49),
                             modifier = Modifier
                                 .height(8.dp)
-                                .width(100.dp)
+                                .width(75.dp)
                                 .align(Alignment.CenterVertically)
 
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
                             text = if ((ratings[ratings.size - index - 1])>9) ratings[ratings.size - index - 1].toString() else 0.toString()+ratings[ratings.size - index - 1].toString(),
-                            fontWeight = FontWeight.Bold
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 14.sp,
+                            softWrap = false
+
                         )
 
 
                     }
-                    Spacer(modifier = Modifier.height(8.dp))
                 }
             }
         }

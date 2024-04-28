@@ -23,9 +23,49 @@ object Data{
             rating = 3.5,
             body = "",
             fuel = "",
-            power = "",
+            power = "4",
+            description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore  .Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore  .Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore  .",
             transmission = "",
-            location = ""
+            location = "Mila",
+            comments = listOf(
+                Comment(
+                    profilePic = R.drawable.profile_picture,
+                    title = "El Bench",
+                    date = "June 5, 2019",
+                    review = "good. but I prefer Atos.",
+                    ),
+                Comment(
+                    profilePic = R.drawable.profile_picture,
+                    title = "El Bench",
+                    date = "June 5, 2019",
+                    review = "good. but I prefer Atos.",
+                ),
+                Comment(
+                    profilePic = R.drawable.profile_picture,
+                    title = "El Bench",
+                    date = "June 5, 2019",
+                    review = "good. but I prefer Atos.",
+                ),
+                Comment(
+                    profilePic = R.drawable.profile_picture,
+                    title = "El Bench",
+                    date = "June 5, 2019",
+                    review = "good. but I prefer Atos.",
+                ),
+                Comment(
+                    profilePic = R.drawable.profile_picture,
+                    title = "El Bench",
+                    date = "June 5, 2019",
+                    review = "good. but I prefer Atos.",
+                ),
+                Comment(
+                    profilePic = R.drawable.profile_picture,
+                    title = "El Bench",
+                    date = "June 5, 2019",
+                    review = "good. but I prefer Atos.",
+                )
+            )
+
             ),
         CarPost(
             id = id,
