@@ -196,10 +196,13 @@ fun LotokNavHost(
                 ForgotPasswordScreen(
                     onGoBackButtonClicked = {
                         navController.navigateUp()
+                    },
+                    onForgotPasswordButtonClicked = {
+                        navController.navigate(LotokScreen.OtpVerificationScreen.name)
                     }
                 )
             }
-            composable(route = LotokScreen.OTPVerificationScreen.name){
+            composable(route = LotokScreen.OtpVerificationScreen.name){
                 OtpVerificationScreen()
             }
             composable(route = LotokScreen.CarDetailsScreen.name){

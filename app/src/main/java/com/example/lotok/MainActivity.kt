@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize()
                 ) {
                     LotokNavHost(
-                        startDestination = LotokScreen.OTPVerificationScreen.name,
+                        startDestination = LotokScreen.HomeScreen.name,
                         welcomeScreenViewModel = dessertReleaseViewModel
                     )
                 }

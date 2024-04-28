@@ -37,7 +37,7 @@ val items = listOf(
         unselectedIcon = Icons.Outlined.ControlPoint,
         hasNews = false,
         badgeCount = 45,
-        route = LotokScreen.HomeScreen.name
+        route = LotokScreen.SignInScreen.name
     ),
     BottomNavigationItem(
         title = "Favourites",

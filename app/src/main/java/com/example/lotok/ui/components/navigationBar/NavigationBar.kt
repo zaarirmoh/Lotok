@@ -26,6 +26,9 @@ fun MyNavigationBar(
         var selectedItemIndex by rememberSaveable {
             mutableIntStateOf(0)
         }
+        var previousIndex by rememberSaveable {
+            mutableIntStateOf(0)
+        }
         items.forEachIndexed { index,item ->
             NavigationBarItem(
                 selected = selectedItemIndex == index,

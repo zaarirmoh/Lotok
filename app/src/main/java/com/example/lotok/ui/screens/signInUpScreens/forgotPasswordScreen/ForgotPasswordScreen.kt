@@ -21,7 +21,8 @@ import com.example.lotok.ui.screens.signInUpScreens.signInUpComponents.SignInUpB
 fun ForgotPasswordScreen(
     modifier: Modifier = Modifier,
     onGoBackButtonClicked: () -> Unit = {},
-    isCheckEmailDialogOpen: MutableState<Boolean> = mutableStateOf(false)
+    isCheckEmailDialogOpen: MutableState<Boolean> = mutableStateOf(false),
+    onForgotPasswordButtonClicked: () -> Unit = {}
 ){
     Scaffold(
         topBar = {
@@ -30,7 +31,10 @@ fun ForgotPasswordScreen(
             )
         }
     ) {
-        ForgotPasswordAlertDialog(openDialog = isCheckEmailDialogOpen)
+        ForgotPasswordAlertDialog(
+            openDialog = isCheckEmailDialogOpen,
+            onForgotPasswordButtonClicked = onForgotPasswordButtonClicked
+        )
         Column(
             modifier = modifier
                 .fillMaxWidth()

@@ -29,7 +29,8 @@ import kotlinx.coroutines.launch
 @Composable
 fun ForgotPasswordAlertDialog(
     modifier: Modifier = Modifier,
-    openDialog: MutableState<Boolean> = mutableStateOf(false)
+    openDialog: MutableState<Boolean> = mutableStateOf(false),
+    onForgotPasswordButtonClicked: () -> Unit = {}
 ){
     if (openDialog.value) {
         LaunchedEffect(true) {
@@ -38,7 +39,7 @@ fun ForgotPasswordAlertDialog(
                     delay(2000)
                 }
             }
-            openDialog.value = false
+            onForgotPasswordButtonClicked()
         }
         AlertDialog(
             onDismissRequest = {
