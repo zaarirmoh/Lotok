@@ -36,7 +36,6 @@ import com.example.lotok.ui.theme.LotokTheme
 @Composable
 fun WelcomeScreen(
     modifier: Modifier = Modifier,
-    welcomeScreenViewModel: WelcomeScreenViewModel,
     onButtonClicked: () -> Unit,
 ) {
     val redContainerImage = painterResource(id = R.drawable.red_container)
@@ -45,8 +44,6 @@ fun WelcomeScreen(
     val words = text.split(" ")
     val buttonColor = Color(android.graphics.Color.parseColor("#B3261E"))
     val buttonText = stringResource(id = R.string.get_Started)
-
-
     Column(modifier = modifier) {
         Box(
             modifier = modifier,
@@ -105,10 +102,7 @@ fun WelcomeScreen(
         Spacer(modifier = Modifier.height(56.dp))
 
         Button(
-            onClick = {
-                onButtonClicked()
-                welcomeScreenViewModel.selectLayout(false)
-                      },
+            onClick = onButtonClicked,
             modifier = Modifier
                 .fillMaxWidth()
                 .size(57.dp)

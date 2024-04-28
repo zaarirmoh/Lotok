@@ -24,7 +24,7 @@ import com.example.lotok.ui.screens.selectACarScreen.SelectACarScreen
 import com.example.lotok.ui.screens.selectBrandScreen.SelectBrandScreen
 import com.example.lotok.ui.screens.settingsScreens.mainSettingsScreen.MainSettingsScreen
 import com.example.lotok.ui.screens.signInUpScreens.forgotPasswordScreen.ForgotPasswordScreen
-import com.example.lotok.ui.screens.signInUpScreens.otpVerificationScreen.OTPVerificationScreen
+import com.example.lotok.ui.screens.signInUpScreens.otpVerificationScreen.OtpVerificationScreen
 import com.example.lotok.ui.screens.signInUpScreens.signInScreen.SignInScreen
 import com.example.lotok.ui.screens.signInUpScreens.singUpScreen.SignUpScreen
 import com.example.lotok.ui.screens.welcomeScreen.WelcomeScreen
@@ -35,9 +35,9 @@ import com.example.lotok.ui.screens.welcomeScreen.WelcomeScreenViewModel
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun LotokNavHost(
+    modifier: Modifier = Modifier,
     startDestination :String = LotokScreen.HomeScreen.name,
     welcomeScreenViewModel: WelcomeScreenViewModel,
-    modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController()
 ) {
     val backStackEntry by navController.currentBackStackEntryAsState()
@@ -70,8 +70,8 @@ fun LotokNavHost(
             modifier = modifier
         ) {
             composable(route = LotokScreen.WelcomeScreen.name){
-                WelcomeScreen(welcomeScreenViewModel= welcomeScreenViewModel ,onButtonClicked = {
-
+                WelcomeScreen(onButtonClicked = {
+                    welcomeScreenViewModel.selectLayout(false)
                     navController.navigate(LotokScreen.HomeScreen.name)
                 })
             }
@@ -200,7 +200,7 @@ fun LotokNavHost(
                 )
             }
             composable(route = LotokScreen.OTPVerificationScreen.name){
-                OTPVerificationScreen()
+                OtpVerificationScreen()
             }
             composable(route = LotokScreen.CarDetailsScreen.name){
                  CarDetailsScreen(Data.carPostsList[0])
