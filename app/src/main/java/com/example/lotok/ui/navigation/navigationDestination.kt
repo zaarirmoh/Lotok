@@ -28,17 +28,15 @@ import com.example.lotok.ui.screens.signInUpScreens.otpVerificationScreen.OtpVer
 import com.example.lotok.ui.screens.signInUpScreens.signInScreen.SignInScreen
 import com.example.lotok.ui.screens.signInUpScreens.singUpScreen.SignUpScreen
 import com.example.lotok.ui.screens.welcomeScreen.WelcomeScreen
-import com.example.lotok.ui.screens.welcomeScreen.WelcomeScreenViewModel
-
 
 // ToDo: Try to Extract the scaffold out so all the screen have like one topAppBar and one NavigationBar
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun LotokNavHost(
     modifier: Modifier = Modifier,
-    startDestination :String = LotokScreen.HomeScreen.name,
-    welcomeScreenViewModel: WelcomeScreenViewModel,
-    navController: NavHostController = rememberNavController()
+    navController: NavHostController = rememberNavController(),
+    onWelcomeScreenButtonClicked: () -> Unit = {},
+    showWelcomeScreen: Boolean
 ) {
     val backStackEntry by navController.currentBackStackEntryAsState()
     val expandedMenu = remember { mutableStateOf(false)}
@@ -66,14 +64,13 @@ fun LotokNavHost(
     ) {
         NavHost(
             navController = navController,
-            startDestination = startDestination ,
+            startDestination = if (showWelcomeScreen) LotokScreen.HomeScreen.name else LotokScreen.WelcomeScreen.name,
             modifier = modifier
         ) {
             composable(route = LotokScreen.WelcomeScreen.name){
-                WelcomeScreen(onButtonClicked = {
-                    welcomeScreenViewModel.selectLayout(false)
-                    navController.navigate(LotokScreen.HomeScreen.name)
-                })
+                WelcomeScreen(
+                    onButtonClicked =  onWelcomeScreenButtonClicked
+                )
             }
             composable(route = LotokScreen.HomeScreen.name){
                 HomeScreen(
