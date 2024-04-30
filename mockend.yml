@@ -14,7 +14,7 @@ models:
       day_price: { int: [2000, 8000] }
       week_price: { int: [15000, 30000] }
       rating: { float: [0.0, 5.0] }
-      desciption: { loremWords: [0, 20] }
+      description: { loremWords: [0, 20] }
       location: { string: [10,12] }
       img_src: { imageURL: [1920, 1080] }
   Comment:
