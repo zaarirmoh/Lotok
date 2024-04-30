@@ -12,8 +12,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.lotok.data.Data
-import com.example.lotok.data.profileInformation
+import com.example.lotok.model.Data
+import com.example.lotok.model.profileInformation
 import com.example.lotok.ui.components.navigationBar.MyNavigationBar
 import com.example.lotok.ui.screens.carDetailsScreen.CarDetailsScreen
 import com.example.lotok.ui.screens.homeScreen.HomeScreen

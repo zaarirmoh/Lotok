@@ -43,7 +43,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.lotok.R
-import com.example.lotok.data.CarPost
+import com.example.lotok.model.CarPost
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

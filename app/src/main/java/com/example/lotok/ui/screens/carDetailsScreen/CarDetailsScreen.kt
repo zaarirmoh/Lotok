@@ -24,8 +24,8 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.lotok.data.CarPost
-import com.example.lotok.data.Data
+import com.example.lotok.model.CarPost
+import com.example.lotok.model.Data
 import com.example.lotok.ui.components.carPost.CommentCard
 import com.example.lotok.ui.components.lines.SimpleLine
 import com.example.lotok.ui.components.topBar.EndIconProfile

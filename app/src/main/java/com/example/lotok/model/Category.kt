@@ -1,4 +1,4 @@
-package com.example.lotok.data
+package com.example.lotok.model
 
 import androidx.annotation.DrawableRes
 

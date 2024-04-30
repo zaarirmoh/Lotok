@@ -23,8 +23,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.lotok.data.CarBrand
-import com.example.lotok.data.Data
+import com.example.lotok.model.CarBrand
+import com.example.lotok.model.Data
 import com.example.lotok.ui.components.topBar.EndIconProfile
 import com.example.lotok.ui.components.topBar.StartIconGoBack
 import com.example.lotok.ui.components.topBar.TopBar

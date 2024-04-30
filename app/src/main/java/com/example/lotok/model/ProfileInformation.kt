@@ -1,7 +1,6 @@
-package com.example.lotok.data
+package com.example.lotok.model
 
 import androidx.annotation.DrawableRes
-import androidx.compose.runtime.MutableState
 import com.example.lotok.R
 data class ProfileInformation(
     var name: String,

@@ -22,7 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.lotok.R
-import com.example.lotok.data.Data
+import com.example.lotok.model.Data
 import com.example.lotok.ui.theme.Shapes
 
 @Composable
