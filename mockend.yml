@@ -1,0 +1,40 @@
+models:
+  Post:
+    hasMany: [Comment]
+    fake:
+      _count: 10
+      model: { string: [5,12] }
+      make: { string: [3,5] }
+      year: { int: [2000, 2024] }
+      engine: { string: [5,10] }
+      power: { string: [5,10] }
+      body: { string: [5,10] }
+      fuel: { string: [5,10] }
+      transmission: { string: [5,10] }
+      day_price: { int: [2000, 8000] }
+      week_price: { int: [15000, 30000] }
+      rating: { float: [0.0, 5.0] }
+      description: { loremWords: [0, 20] }
+      location: { string: [10,12] }
+      img_src: { imageURL: [1920, 1080] }
+  Comment:
+    belongsTo: [Post]
+    fake:
+      _count: 25
+      profile_pic: { imageURL: [36, 36] }
+      title: { string: [5,10] }
+      review: { string: [5,10] }
+      date: { string: [5,10] }
+  Fake:
+    belongsTo: [Post]
+    fake:
+      _count: 25
+      email: email
+      body: { loremParagraphs: [10, 100] }
+      createdAt: { dateTime: [2010-01-01T00:00:00Z, 2020-12-31T23:59:59Z] }
+      isDraft: { bool: 50 }
+      img_srcs: { img_src1: { bool: 50 } }
+  Category:
+    fake:
+      _count: 5
+      img_src: { imageURL: [200, 200] }
