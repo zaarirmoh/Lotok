@@ -34,17 +34,3 @@ models:
       createdAt: { dateTime: [2010-01-01T00:00:00Z, 2020-12-31T23:59:59Z] }
       isDraft: { bool: 50 }
       img_srcs: { img_src1: { bool: 50 } }
-  Nested:
-    belongsTo: [Post]
-    data: [
-      { title: {
-          img1: string: [5,10] ,
-          img2: string: [5,10] ,
-          },
-      },
-      { title: {
-          img1: string: [5,10] ,
-          img2: string: [5,10] ,
-          },
-      },
-    ]
