@@ -4,7 +4,7 @@ models:
     fake:
       _count: 10
       id: { int: [1, 100] }
-      model: { oneOfString: [ M4 Competition, M5 Competition ] }
+      model: { string: [ M4 Competition, M5 Competition ] }
       make: { oneOfString: [ BMW , Tesla ] }
       year: { int: [2000, 2024] }
       cover: { imageURL: [1920, 1080] }
