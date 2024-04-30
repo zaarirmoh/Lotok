@@ -3,7 +3,6 @@ models:
     hasMany: [Comment]
     fake:
       _count: 10
-      id: { int: [1, 100] }
       model: { "M4 Competition" }
       make: { oneOfString: [ BMW , Tesla ] }
       year: { int: [2000, 2024] }
