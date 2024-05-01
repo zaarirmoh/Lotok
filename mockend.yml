@@ -38,3 +38,7 @@ models:
     fake:
       _count: 5
       img_src: { imageURL: [200, 200] }
+  Image:
+    fake:
+      _count: 5
+      img_src: { imageURL: [200, 200] }
