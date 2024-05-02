@@ -16,12 +16,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.lotok.R
+import com.example.lotok.model.CarPost
 import com.example.lotok.model.Data
 import com.example.lotok.ui.components.carPost.CarPostCard
 
 @Composable
 fun PopularCars(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    carPostList : List<CarPost> = Data.carPostsList
 ){
     Column{
         Text(
@@ -30,12 +32,13 @@ fun PopularCars(
             fontSize = 20.sp,
             modifier = modifier.padding(start = 21.dp)
         )
-        CarPosts()
+        CarPosts(carPostList = carPostList)
     }
 }
 @Composable
 fun CarPosts(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    carPostList : List<CarPost> = Data.carPostsList
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(count = 2),
@@ -44,7 +47,7 @@ fun CarPosts(
         horizontalArrangement = Arrangement.spacedBy(13.dp),
         modifier = modifier.height((220*(Data.carPostsList.size/2)).dp)
     ) {
-        items(Data.carPostsList){
+        items(carPostList){
             CarPostCard(carPostInfo = it)
         }
     }

@@ -59,7 +59,8 @@ fun CarDetailsScreen(
             CarPictures(
                 imgSrc = carPost.imgSrc,
                 modifier = Modifier.fillMaxWidth(),
-                onButtonClicked = bookButtonClicked
+                onButtonClicked = bookButtonClicked,
+                buttonEnabled = true,
 
             )
 

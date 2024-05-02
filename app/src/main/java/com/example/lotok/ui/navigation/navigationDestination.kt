@@ -15,6 +15,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.lotok.model.Data
 import com.example.lotok.model.profileInformation
 import com.example.lotok.ui.components.navigationBar.MyNavigationBar
+import com.example.lotok.ui.screens.bookingScreen.BookingScreen
 import com.example.lotok.ui.screens.carDetailsScreen.CarDetailsScreen
 import com.example.lotok.ui.screens.homeScreen.HomeScreen
 import com.example.lotok.ui.screens.profileDetailsScreens.editProfileScreen.EditProfileScreen
@@ -50,6 +51,8 @@ fun LotokNavHost(
     val currentScreen = LotokScreen.valueOf(
         backStackEntry?.destination?.route ?: LotokScreen.HomeScreen.name
     )
+
+
     Scaffold(
         /**
          * topBar = {
@@ -64,7 +67,7 @@ fun LotokNavHost(
     ) {
         NavHost(
             navController = navController,
-            startDestination = if (showWelcomeScreen) LotokScreen.HomeScreen.name else LotokScreen.WelcomeScreen.name,
+            startDestination = LotokScreen.BookingScreen.name, /*if (showWelcomeScreen) LotokScreen.HomeScreen.name else LotokScreen.WelcomeScreen.name,*/
             modifier = modifier
         ) {
             composable(route = LotokScreen.WelcomeScreen.name){
@@ -87,7 +90,9 @@ fun LotokNavHost(
                         navController.navigate(LotokScreen.MainSettingsScreen.name)
                     },
                     openDialog = openDialog,
-                    expendedMenu = expandedMenu
+                    expendedMenu = expandedMenu,
+
+
                 )
             }
             composable(route = LotokScreen.SelectACarScreen.name){
@@ -204,6 +209,9 @@ fun LotokNavHost(
             }
             composable(route = LotokScreen.CarDetailsScreen.name){
                  CarDetailsScreen(Data.carPostsList[0])
+            }
+            composable(route = LotokScreen.BookingScreen.name){
+                BookingScreen(carPost = Data.carPostsList[0])
             }
         }
     }

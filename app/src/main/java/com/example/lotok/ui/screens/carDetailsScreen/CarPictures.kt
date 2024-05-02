@@ -37,7 +37,8 @@ import com.example.lotok.model.Data
 fun CarPictures(
     modifier : Modifier = Modifier,
     imgSrc : List<Int>,
-    onButtonClicked : () -> Unit = {}
+    onButtonClicked : () -> Unit = {},
+    buttonEnabled : Boolean = true,
 
 ){
     var currentPosition by remember { mutableIntStateOf(0) }
@@ -54,23 +55,12 @@ fun CarPictures(
                 .padding(bottom = 20.dp)
                 .background(Color.Gray)
         )
-        Button(
-            onClick = onButtonClicked,
-            colors = ButtonDefaults.buttonColors(Color(android.graphics.Color.parseColor("#B3261E"))),
-            modifier = Modifier
-                .height(36.dp)
-                .fillMaxWidth()
-                .padding(start = 4.dp, end = 4.dp)
-                .align(alignment = Alignment.BottomCenter)
-        ) {
-            Text(
-                text = "Book",
-                fontSize = 18.sp ,
-                color = Color.White   ,
-                fontWeight = FontWeight.Bold,
-                modifier= Modifier.align(alignment = Alignment.CenterVertically)
-            )
-        }
+
+        if (buttonEnabled) BookButton (onButtonClicked,modifier = Modifier
+            .height(36.dp)
+            .fillMaxWidth()
+            .padding(start = 4.dp, end = 4.dp)
+            .align(alignment = Alignment.BottomCenter))
 
         Row(
             modifier = Modifier
@@ -114,6 +104,22 @@ fun CarPictures(
     }
 }
 
+@Composable
+fun BookButton(onButtonClicked : ()-> Unit , modifier: Modifier){
+    Button(
+        onClick = onButtonClicked,
+        colors = ButtonDefaults.buttonColors(Color(android.graphics.Color.parseColor("#B3261E"))),
+        modifier = modifier
+    ) {
+        Text(
+            text = "Book",
+            fontSize = 18.sp ,
+            color = Color.White   ,
+            fontWeight = FontWeight.Bold,
+            modifier= Modifier.align(alignment = Alignment.CenterVertically)
+        )
+    }
+}
 
 @Composable
 @Preview

@@ -63,8 +63,19 @@ fun CategoryCard(
             modifier = modifier.fillMaxSize()
             //contentScale = ContentScale.Fit
             //modifier = modifier
-              //  .width(101.dp)
-                //.height(70.dp)
+            //  .width(101.dp)
+            //.height(70.dp)
         )
     }
 }
+
+
+
+/*Image(
+            painter = painterResource(id = categoryPhoto),
+            contentDescription = null,
+            modifier = modifier
+                .fillMaxSize()
+                .clickable(categoryPhoto == R.drawable.ic_connection_error) {retryAction}
+
+        )*/
