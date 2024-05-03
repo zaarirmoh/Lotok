@@ -27,6 +27,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material.icons.filled.CreditCard
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material.icons.filled.Upload
@@ -43,7 +44,6 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -115,27 +115,27 @@ fun BookingScreen(
             TextField(
                 modifier = Modifier.padding(16.dp),
                 labelText ="First name",
-                labelTextWarning ="" ,
+                labelTextWarning ="Please enter your first name" ,
                 placeHolderText = "",
                 imageVector = Icons.Default.AccountBox,
                 keyboardOptions = KeyboardOptions(
                     imeAction = ImeAction.Next,
                     keyboardType = KeyboardType.Text
                 ),
-                condition = {true}
+                condition = {it.isNotEmpty()}
             )
 
             TextField(
                 modifier = Modifier.padding(16.dp),
                 labelText ="Last name",
-                labelTextWarning ="" ,
+                labelTextWarning ="Please enter your last name" ,
                 placeHolderText = "",
                 imageVector = Icons.Default.Person,
                 keyboardOptions = KeyboardOptions(
                     imeAction = ImeAction.Next,
                     keyboardType = KeyboardType.Text
                 ),
-                condition = {true}
+                condition = {it.isNotEmpty()}
             )
 
             TextField(
@@ -156,10 +156,25 @@ fun BookingScreen(
 
             ImagePickerTextField(modifier= Modifier.padding(16.dp))
 
+            TextField(
+                modifier = Modifier.padding(16.dp),
+                labelText ="Driving licence number",
+                labelTextWarning ="Please enter your driving licence number" ,
+                placeHolderText = "",
+                imageVector = Icons.Default.CreditCard,
+                keyboardOptions = KeyboardOptions(
+                    imeAction = ImeAction.Next,
+                    keyboardType = KeyboardType.Phone
+                ),
+                condition = {it.isNotEmpty()}
+            )
+
             /*WilayasDropdownMenu(
                 Modifier
                     .fillMaxWidth()
                     .padding(16.dp))*/
+
+
 
 
 
@@ -172,36 +187,58 @@ fun BookingScreen(
 
 @Composable
 fun ImagePickerTextField(modifier: Modifier) {
+
     val context = LocalContext.current
     val file = context.createImageFile()
+
     val uri = FileProvider.getUriForFile(
         Objects.requireNonNull(context),
         context.packageName + ".provider", file
     )
 
-    var selectedImageUris by remember { mutableStateOf(mutableStateListOf<Uri>()) }
+
+
+    var capturedImageUri by remember {
+        mutableStateOf<Uri>(Uri.EMPTY)
+    }
+
+    var selectedImageUris by remember {
+        mutableStateOf<List<Uri>>(emptyList())
+    }
+
 
     val cameraLauncher =
         rememberLauncherForActivityResult(ActivityResultContracts.TakePicture()){
-            selectedImageUris.add(uri)
+            capturedImageUri = uri
+            selectedImageUris = selectedImageUris.toMutableList().apply { add(capturedImageUri) }
         }
+
 
     val permissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission()
-    ){ granted ->
-        if (granted) {
+    ){
+        if (it)
+        {
+            Toast.makeText(context, "Permission Granted", Toast.LENGTH_SHORT).show()
             cameraLauncher.launch(uri)
-        } else {
+        }
+        else
+        {
             Toast.makeText(context, "Permission Denied", Toast.LENGTH_SHORT).show()
         }
     }
 
     var isDialogOpen by remember { mutableStateOf(false) }
 
+
     val multiplePhotoPickerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.PickMultipleVisualMedia(),
-        onResult = { uris -> selectedImageUris.addAll(uris) }
+        onResult = { uris -> selectedImageUris = uris }
     )
+
+
+
+
 
     Card(
         modifier = modifier.fillMaxSize(),
@@ -212,31 +249,34 @@ fun ImagePickerTextField(modifier: Modifier) {
         Row(modifier = Modifier.fillMaxSize(),horizontalArrangement = Arrangement.SpaceBetween) {
             if (selectedImageUris.isEmpty()) {
                 Text(
-                    text = "Driving licence Pictures",
+                    text = "    Driving licence Pictures",
                     color = Color.Gray,
-                    modifier = Modifier.align(
+                    modifier =Modifier.align(
                         androidx.compose.ui.Alignment.CenterVertically
                     )
+
                 )
-            } else {
-                Row(modifier = Modifier.weight(1f)) {
-                    selectedImageUris.forEach { uri ->
-                        AsyncImage(
-                            model = uri,
-                            contentDescription = null,
-                            modifier = Modifier
-                                .size(50.dp)
-                                .padding(4.dp),
-                            contentScale = ContentScale.Crop
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                    }
-                }
+
             }
+            else  {
+            Row(modifier = Modifier.weight(1f)) {
+                selectedImageUris.forEach  { uri ->
+                    AsyncImage(
+                        model = uri,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(50.dp)
+                            .padding(4.dp),
+                        contentScale = ContentScale.Crop
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                }
+            } }
 
             IconButton(onClick = { isDialogOpen = true }, modifier = Modifier) {
                 Icon(Icons.Default.Upload, contentDescription = null)
             }
+
         }
     }
 
@@ -252,6 +292,9 @@ fun ImagePickerTextField(modifier: Modifier) {
                         if (permissionCheckResult == PackageManager.PERMISSION_GRANTED)
                         {
                             cameraLauncher.launch(uri)
+                            capturedImageUri = uri
+                            selectedImageUris.toMutableList().add(capturedImageUri)
+
                         }
                         else
                         {
@@ -275,7 +318,11 @@ fun ImagePickerTextField(modifier: Modifier) {
             dismissButton = { }
         )
     }
+
+
 }
+
+
 
 fun Context.createImageFile(): File {
     val timeStamp = SimpleDateFormat("yyyy_MM_dd_HH:mm:ss").format(Date())
@@ -287,7 +334,6 @@ fun Context.createImageFile(): File {
     )
     return image
 }
-
 
 
 
