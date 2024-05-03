@@ -1,44 +1,66 @@
 package com.example.lotok.ui.screens.bookingScreen
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import android.Manifest
+import android.content.Context
+import android.content.pm.PackageManager
+import android.net.Uri
+import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Phone
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material.icons.filled.Upload
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
+import coil.compose.AsyncImage
 import com.example.lotok.model.CarPost
 import com.example.lotok.model.Data
 import com.example.lotok.ui.components.carPost.Rating
@@ -48,6 +70,11 @@ import com.example.lotok.ui.components.topBar.TopBar
 import com.example.lotok.ui.components.topBar.TopBarCenterText
 import com.example.lotok.ui.screens.carDetailsScreen.CarPictures
 import com.example.lotok.ui.screens.carDetailsScreen.NameAndPrice
+import java.io.File
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Objects
+
 
 @Composable
 fun BookingScreen(
@@ -87,6 +114,32 @@ fun BookingScreen(
 
             TextField(
                 modifier = Modifier.padding(16.dp),
+                labelText ="First name",
+                labelTextWarning ="" ,
+                placeHolderText = "",
+                imageVector = Icons.Default.AccountBox,
+                keyboardOptions = KeyboardOptions(
+                    imeAction = ImeAction.Next,
+                    keyboardType = KeyboardType.Text
+                ),
+                condition = {true}
+            )
+
+            TextField(
+                modifier = Modifier.padding(16.dp),
+                labelText ="Last name",
+                labelTextWarning ="" ,
+                placeHolderText = "",
+                imageVector = Icons.Default.Person,
+                keyboardOptions = KeyboardOptions(
+                    imeAction = ImeAction.Next,
+                    keyboardType = KeyboardType.Text
+                ),
+                condition = {true}
+            )
+
+            TextField(
+                modifier = Modifier.padding(16.dp),
                 labelText = "Phone number",
                 labelTextWarning = "Please enter a valid phone number",
                 placeHolderText = "",
@@ -101,10 +154,140 @@ fun BookingScreen(
                 }
             )
 
-            WilayasDropdownMenu(Modifier.padding(16.dp))
+            ImagePickerTextField(modifier= Modifier.padding(16.dp))
+
+            /*WilayasDropdownMenu(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp))*/
+
+
+
+
         }
     }
 }
+
+
+
+@Composable
+fun ImagePickerTextField(modifier: Modifier) {
+    val context = LocalContext.current
+    val file = context.createImageFile()
+    val uri = FileProvider.getUriForFile(
+        Objects.requireNonNull(context),
+        context.packageName + ".provider", file
+    )
+
+    var selectedImageUris by remember { mutableStateOf(mutableStateListOf<Uri>()) }
+
+    val cameraLauncher =
+        rememberLauncherForActivityResult(ActivityResultContracts.TakePicture()){
+            selectedImageUris.add(uri)
+        }
+
+    val permissionLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ){ granted ->
+        if (granted) {
+            cameraLauncher.launch(uri)
+        } else {
+            Toast.makeText(context, "Permission Denied", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    var isDialogOpen by remember { mutableStateOf(false) }
+
+    val multiplePhotoPickerLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.PickMultipleVisualMedia(),
+        onResult = { uris -> selectedImageUris.addAll(uris) }
+    )
+
+    Card(
+        modifier = modifier.fillMaxSize(),
+        shape = RoundedCornerShape(4.dp),
+        border = BorderStroke(1.dp, Color.Gray),
+        colors = CardDefaults.cardColors(Color.Transparent)
+    ) {
+        Row(modifier = Modifier.fillMaxSize(),horizontalArrangement = Arrangement.SpaceBetween) {
+            if (selectedImageUris.isEmpty()) {
+                Text(
+                    text = "Driving licence Pictures",
+                    color = Color.Gray,
+                    modifier = Modifier.align(
+                        androidx.compose.ui.Alignment.CenterVertically
+                    )
+                )
+            } else {
+                Row(modifier = Modifier.weight(1f)) {
+                    selectedImageUris.forEach { uri ->
+                        AsyncImage(
+                            model = uri,
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(50.dp)
+                                .padding(4.dp),
+                            contentScale = ContentScale.Crop
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                    }
+                }
+            }
+
+            IconButton(onClick = { isDialogOpen = true }, modifier = Modifier) {
+                Icon(Icons.Default.Upload, contentDescription = null)
+            }
+        }
+    }
+
+    if (isDialogOpen) {
+        AlertDialog(
+            onDismissRequest = { isDialogOpen = false },
+            title = { Text("Choose an image") },
+            text = {
+                Column {
+                    TextButton(onClick = {
+                        val permissionCheckResult =
+                            ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA)
+                        if (permissionCheckResult == PackageManager.PERMISSION_GRANTED)
+                        {
+                            cameraLauncher.launch(uri)
+                        }
+                        else
+                        {
+                            permissionLauncher.launch(Manifest.permission.CAMERA)
+                        }
+                        isDialogOpen = false
+                    }) {
+                        Text("Take a photo")
+                    }
+                    TextButton(onClick = {
+                        multiplePhotoPickerLauncher.launch(
+                            PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
+                        )
+                        isDialogOpen = false
+                    }) {
+                        Text("Choose from gallery")
+                    }
+                }
+            },
+            confirmButton = { },
+            dismissButton = { }
+        )
+    }
+}
+
+fun Context.createImageFile(): File {
+    val timeStamp = SimpleDateFormat("yyyy_MM_dd_HH:mm:ss").format(Date())
+    val imageFileName = "JPEG_" + timeStamp + "_"
+    val image = File.createTempFile(
+        imageFileName,
+        ".jpg",
+        externalCacheDir
+    )
+    return image
+}
+
 
 
 
@@ -126,7 +309,6 @@ fun TextField(
     var isValid by remember { mutableStateOf(true) }
     val textFieldColors = TextFieldDefaults.outlinedTextFieldColors(
         focusedBorderColor = if (!isValid) Color.Red else Color(0xFF7D848D)
-
     )
     OutlinedTextField(
         value = text,
@@ -167,60 +349,76 @@ fun TextField(
     )
 }
 
+/*@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun WilayasDropdownMenu(modifier: Modifier) {
-    val wilayas = listOf("Adrar", "Chlef", "Laghouat", "Oum El Bouaghi", "Batna", "Béjaïa", "Biskra", "Béchar", "Blida", "Bouira", "Tamanrasset", "Tébessa", "Tlemcen", "Tiaret", "Tizi Ouzou", "Algiers", "Djelfa", "Jijel", "Sétif", "Saïda", "Skikda", "Sidi Bel Abbès", "Annaba", "Guelma", "Constantine", "Médéa", "Mostaganem", "M'Sila", "Mascara", "Ouargla", "Oran", "El Bayadh", "Illizi", "Bordj Bou Arréridj", "Boumerdès", "El Tarf", "Tindouf", "Tissemsilt", "El Oued", "Khenchela", "Souk Ahras", "Tipasa", "Mila", "Aïn Defla", "Naâma", "Aïn Témouchent", "Ghardaïa", "Relizane")
-    var selectedWilaya by remember { mutableStateOf(wilayas[0]) }
+fun WilayasDropdownMenu( modifier : Modifier = Modifier) {
+    var mExpanded by remember { mutableStateOf(false) }
+    val wilayas = listOf(
+        "Adrar", "Chlef", "Laghouat", "Oum El Bouaghi", "Batna", "Béjaïa",
+        "Biskra", "Béchar", "Blida", "Bouira", "Tamanrasset", "Tébessa",
+        "Tlemcen", "Tiaret", "Tizi Ouzou", "Alger", "Djelfa", "Jijel",
+        "Sétif", "Saïda", "Skikda", "Sidi Bel Abbès", "Annaba", "Guelma",
+        "Constantine", "Médéa", "Mostaganem", "M'Sila", "Mascara", "Ouargla",
+        "Oran", "El Bayadh", "Illizi", "Bordj Bou Arreridj", "Boumerdès",
+        "El Tarf", "Tindouf", "Tissemsilt", "El Oued", "Khenchela", "Souk Ahras",
+        "Tipaza", "Mila", "Aïn Defla", "Naâma", "Aïn Témouchent", "Ghardaïa",
+        "Relizane"
+    )
 
-    Box(modifier = modifier) {
-        var expanded by remember { mutableStateOf(false) }
-        val surfaceColor = MaterialTheme.colorScheme.primary
+    var mSelectedText by remember { mutableStateOf("") }
 
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
+    var mTextFieldSize by remember { mutableStateOf(Size.Zero)}
+
+    // Up Icon when expanded and down icon when collapsed
+    val icon = if (mExpanded)
+        Icons.Filled.KeyboardArrowUp
+    else
+        Icons.Filled.KeyboardArrowDown
+
+    Column(modifier = modifier) {
+
+        OutlinedTextField(
+            value = mSelectedText,
+            onValueChange = { mSelectedText = it },
             modifier = Modifier
                 .fillMaxWidth()
-                .clickable { expanded = true }
-        ) {
-            OutlinedTextField(
-                value = selectedWilaya,
-                onValueChange = { selectedWilaya = it },
-                label = { Text("Wilaya") },
-                readOnly = true,
-                modifier = Modifier.weight(1f)
-            )
-
-            Icon(
-                imageVector = Icons.Filled.ArrowDropDown,
-                contentDescription = "Dropdown Icon",
-                tint = if (expanded) MaterialTheme.colorScheme.primary else surfaceColor,
-                modifier = Modifier.clickable { expanded = true }
-            )
-        }
+                .onGloballyPositioned { coordinates ->
+                    // This value is used to assign to
+                    // the DropDown the same width
+                    mTextFieldSize = coordinates.size.toSize()
+                },
+            label = {Text("Wilaya")},
+            trailingIcon = {
+                Icon(icon,"contentDescription",
+                    Modifier.clickable { mExpanded = !mExpanded })
+            },
+            readOnly = true
+        )
 
         DropdownMenu(
-            expanded = expanded,
-            onDismissRequest = { expanded = false },
-            modifier = Modifier.background(Color.White)
+            expanded = mExpanded,
+            onDismissRequest = { mExpanded = false },
+            modifier = Modifier
+                .width(with(LocalDensity.current){mTextFieldSize.width.toDp()})
         ) {
-            wilayas.forEach { wilaya ->
+            wilayas.forEach { label ->
                 DropdownMenuItem(onClick = {
-                    selectedWilaya = wilaya
-                    expanded = false
-                } , text = {Text(text = wilaya)})
-                    //Text(text = wilaya)
-
+                    mSelectedText = label
+                    mExpanded = false
+                },text = {Text(text = label)})
             }
         }
     }
-}
+}*/
 
 
 
 
 
 
-@Composable
+
+
+    @Composable
 @Preview(showBackground = true)
 fun BookingScreenPreview(){
     BookingScreen(carPost = Data.carPostsList[0])
