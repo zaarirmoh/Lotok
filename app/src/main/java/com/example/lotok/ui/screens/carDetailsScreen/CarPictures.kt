@@ -76,7 +76,6 @@ fun CarPictures(
                 modifier = Modifier
                     .size(40.dp)
 
-
             ) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
