@@ -2,7 +2,7 @@ models:
   Post:
     hasMany: [Comment]
     fake:
-      _count: 100
+      _count: 10
       model: { string: [5,12] }
       make: { string: [3,5] }
       year: { int: [2000, 2024] }
