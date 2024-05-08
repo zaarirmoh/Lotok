@@ -19,6 +19,15 @@ models:
       img_src: { imageURL: [1920, 1080] }
   Comment:
     belongsTo: [Post]
+    hasMany: [CommentReply]
+    fake:
+      _count: 25
+      profile_pic: { imageURL: [36, 36] }
+      title: { string: [5,10] }
+      review: { string: [5,10] }
+      date: { string: [5,10] }
+  CommentReply:
+    belongsTo: [Comment]
     fake:
       _count: 25
       profile_pic: { imageURL: [36, 36] }
