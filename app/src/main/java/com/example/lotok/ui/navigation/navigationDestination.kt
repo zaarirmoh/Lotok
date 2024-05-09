@@ -3,6 +3,7 @@ package com.example.lotok.ui.navigation
 import android.annotation.SuppressLint
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -16,8 +17,10 @@ import com.example.lotok.model.Data
 import com.example.lotok.model.profileInformation
 import com.example.lotok.ui.components.navigationBar.MyNavigationBar
 import com.example.lotok.ui.screens.bookingScreen.BookingScreen
+import com.example.lotok.ui.screens.bookingScreen.BookingSharedViewModel
 import com.example.lotok.ui.screens.carDetailsScreen.CarDetailsScreen
 import com.example.lotok.ui.screens.homeScreen.HomeScreen
+import com.example.lotok.ui.screens.orderDetailsScreen.OrderDetailsScreen
 import com.example.lotok.ui.screens.profileDetailsScreens.editProfileScreen.EditProfileScreen
 import com.example.lotok.ui.screens.profileDetailsScreens.profileDetailsScreen.ProfileDetailsScreen
 import com.example.lotok.ui.screens.profileScreen.ProfileScreen
@@ -52,6 +55,9 @@ fun LotokNavHost(
         backStackEntry?.destination?.route ?: LotokScreen.HomeScreen.name
     )
 
+    val bookingSharedViewModel = BookingSharedViewModel()
+
+
 
     Scaffold(
         /**
@@ -65,6 +71,7 @@ fun LotokNavHost(
             if(currentScreen.hasNavigationBar) MyNavigationBar(navController = navController)
         }
     ) {
+        val uiState by bookingSharedViewModel.uiState.collectAsState()
         NavHost(
             navController = navController,
             startDestination = LotokScreen.BookingScreen.name, /*if (showWelcomeScreen) LotokScreen.HomeScreen.name else LotokScreen.WelcomeScreen.name,*/
@@ -211,7 +218,19 @@ fun LotokNavHost(
                  CarDetailsScreen(Data.carPostsList[0])
             }
             composable(route = LotokScreen.BookingScreen.name){
-                BookingScreen(carPost = Data.carPostsList[0])
+                BookingScreen(
+                    carPost = Data.carPostsList[0],
+                    bookingSharedViewModel = bookingSharedViewModel,
+                    bookNowButtonClicked = {
+
+                        navController.navigate(LotokScreen.OrderDetailsScreen.name)
+
+                    }
+                )
+            }
+            composable(route = LotokScreen.OrderDetailsScreen.name){
+
+                OrderDetailsScreen(uiState = uiState, carPost =  Data.carPostsList[0])
             }
         }
     }

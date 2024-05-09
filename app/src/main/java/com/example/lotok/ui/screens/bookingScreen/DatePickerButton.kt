@@ -29,15 +29,17 @@ import androidx.compose.ui.unit.dp
 import java.util.Calendar
 
 @Composable
-fun DatePickerButton(modifier: Modifier = Modifier) {
-    var selectedDate by remember { mutableStateOf("mm/dd/yyyy") }
+fun DatePickerButton(date : String,onDateChanged : (String) -> Unit ,modifier: Modifier = Modifier) {
+    var selectedDate by remember { mutableStateOf(date) }
     val context = LocalContext.current
 
     OutlinedButton(
         onClick = {
             showDatePicker(context) { year, month, day ->
-                selectedDate = "$month/$day/$year"
+                selectedDate = "$day/$month/$year"
+                onDateChanged(selectedDate)
             }
+
         },
         shape = RoundedCornerShape(4.dp), // This makes the button round
         border = BorderStroke(1.dp, Color.Gray), // This adds a border
@@ -54,7 +56,7 @@ fun DatePickerButton(modifier: Modifier = Modifier) {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text=selectedDate,
+                text= selectedDate,
                 color = if (selectedDate == "mm/dd/yyyy") Color.Gray else Color.Black
             )
 

@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.sp
 
 
 @Composable
-fun PaymentOptions(modifier: Modifier = Modifier) {
+fun PaymentOptions(modifier: Modifier = Modifier,paymentMethod : (String) -> Unit) {
     var selectedOption by remember { mutableStateOf("Credit Card") }
     val options = listOf("Cash on Delivery", "Credit Card")
 
@@ -34,7 +34,10 @@ fun PaymentOptions(modifier: Modifier = Modifier) {
             ) {
                 RadioButton(
                     selected = selectedOption == option,
-                    onClick = { selectedOption = option }
+                    onClick = {
+                        selectedOption = option
+                        paymentMethod(option)
+                    }
                 )
                 Text(
                     text = option,

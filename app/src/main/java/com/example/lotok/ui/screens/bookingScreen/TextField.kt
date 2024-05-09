@@ -12,7 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -24,26 +23,29 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun TextField(
     modifier: Modifier = Modifier,
+    value : String = "",
+    onValueChange : (String) -> Unit = {},
     labelText : String,
     labelTextWarning: String,
     singleLine : Boolean = true,
     placeHolderText : String,
     imageVector: ImageVector,
     keyboardOptions : KeyboardOptions,
-    condition : (String) -> Boolean
+    condition : (String) -> Boolean,
 
 ){
+
     val keyboardController = LocalSoftwareKeyboardController.current
-    var text by rememberSaveable { mutableStateOf("") }
     var isValid by remember { mutableStateOf(true) }
     val textFieldColors = TextFieldDefaults.outlinedTextFieldColors(
         focusedBorderColor = if (!isValid) Color.Red else Color(0xFF7D848D)
     )
     OutlinedTextField(
-        value = text,
+        value = value,
         onValueChange = {
-            text = it
+            onValueChange(it)
             isValid = condition(it)
+
         },
         label = {
             Text(
