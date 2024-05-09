@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -17,6 +18,7 @@ import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.CreditCard
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Scaffold
@@ -91,6 +93,19 @@ fun BookingScreen(
     val rentedDays = DateDifference(firstDate = fromDate, secondDate = toDate)
 
     val totalPrice = rentedDays * carPost.dayPrice
+
+    val validCommand = (
+            firstName.isNotEmpty() &&
+                    lastName.isNotEmpty() &&
+                    ( phoneNumber.length) == 10 && (phoneNumber.substring(0,2) == "05" || phoneNumber.substring(0,2) == "06" || phoneNumber.substring(0,2) == "07")
+                    && phoneNumber.toIntOrNull() != null &&
+                    licenceNumber.isNotEmpty() &&
+                    fromDate != "dd/mm/yyyy" && toDate != "dd/mm/yyyy" &&
+                    expirationDate != "dd/mm/yyyy"
+            )
+    var openDialog by remember { mutableStateOf(false)}
+
+    var requeredFields by remember { mutableStateOf(false) }
 
 
     Scaffold(
@@ -332,11 +347,13 @@ fun BookingScreen(
 
 
             Button(
-                onClick = bookNowButtonClicked ,
+                onClick = {
+                        if (validCommand) openDialog = true else requeredFields = true
+                          },
                 colors = ButtonDefaults.buttonColors(Color(android.graphics.Color.parseColor("#B3261E"))),
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(start = 20.dp, end = 16.dp, bottom = 16.dp, top = 16.dp)
+                    .padding(start = 20.dp, end = 16.dp, top = 16.dp )
             ) {
                 Text(
                     text = "Book now",
@@ -344,6 +361,39 @@ fun BookingScreen(
                     color = Color.White   ,
                     fontWeight = FontWeight.Bold,
                     modifier= Modifier.align(alignment = Alignment.CenterVertically)
+                )
+            }
+            if (requeredFields)
+                Text(
+                text = "Please fill all the fields !",
+                color = Color.Red,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 25.dp, end = 16.dp, bottom = 16.dp),
+                fontSize = 12.sp,
+            )
+            else Spacer(modifier = Modifier.height(30.dp))
+
+            if (openDialog) {
+                AlertDialog(
+                    onDismissRequest = { openDialog = false  },
+                    title = { Text("Confirm Booking") },
+                    text = { Text("Are you sure you want to confirm this booking?") },
+                    confirmButton = {
+                        Button(onClick = {
+
+                            bookNowButtonClicked()
+                            openDialog = false
+
+                        }) {
+                            Text("Confirm")
+                        }
+                    },
+                    dismissButton = {
+                        Button(onClick = { openDialog = false }) {
+                            Text("Cancel")
+                        }
+                    }
                 )
             }
 

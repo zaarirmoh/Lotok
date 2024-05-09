@@ -9,6 +9,6 @@ data class OrderDetails(
     val fromDate: String = "dd/mm/yyyy",
     val toDate: String = "dd/mm/yyyy",
     val carPost: CarPost = Data.carPostsList[0],
-    val paymentMethod: String = "Cash on delivery",
+    val paymentMethod: String = "Credit Card",
     val totalPrice : Double = 0.0
 )
