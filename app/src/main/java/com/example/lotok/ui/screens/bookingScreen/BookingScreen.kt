@@ -56,7 +56,7 @@ fun BookingScreen(
     bookingSharedViewModel: BookingSharedViewModel,
     carPost : CarPost,
     onGoBackIconClicked: () -> Unit = {},
-    bookNowButtonClicked : () -> Unit = {}
+    bookNowButtonClicked : () -> Unit = {},
 ) {
     var firstName by remember {
         mutableStateOf(bookingSharedViewModel.uiState.value.firstName)
@@ -334,15 +334,24 @@ fun BookingScreen(
                 text = "Payment Method :",
                 fontSize = 13.sp,
                 fontWeight = FontWeight.SemiBold,
-                modifier = Modifier.padding(start = 30.dp, top = 20.dp)
+                modifier = Modifier.padding(start = 30.dp, top = 30.dp)
             )
             PaymentOptions(paymentMethod = {it -> paymentMethod = it})
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth().padding(start = 24.dp, end = 10.dp, bottom = 16.dp,top = 40.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Text(text = "Total Price :")
-                Text(text = "${totalPrice} DZA")
+                Text(
+                    text = "Total Price :",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.SemiBold,
+                )
+                Text(
+                    text = "${totalPrice} DZA",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = Color(android.graphics.Color.parseColor("#B3261E"))
+                )
             }
 
 

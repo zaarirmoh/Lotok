@@ -18,5 +18,7 @@ enum class LotokScreen(
     ForgotPasswordScreen(false),
     OtpVerificationScreen(false),
     BookingScreen(false),
-    OrderDetailsScreen(false)
+    OrderDetailsScreen(false),
+    AddPostScreen(false),
+
 }

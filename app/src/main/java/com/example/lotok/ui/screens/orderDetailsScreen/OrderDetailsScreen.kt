@@ -1,5 +1,6 @@
 package com.example.lotok.ui.screens.orderDetailsScreen
 
+import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,40 +10,43 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.lotok.model.CarPost
 import com.example.lotok.model.OrderDetails
 
 @Composable
 fun OrderDetailsScreen(
-    carPost: CarPost,
     uiState : OrderDetails,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    context: Context,
+    onDoneButtonClicked: () -> Unit = {},
 ) {
     Column(modifier = modifier.fillMaxSize()) {
         CardDetails(
-            title =
-            "Car Details",
+            title = "Car Details",
             texts = listOf(
                 { Text(text = "Make:") },
-                { Text(text = carPost.make )},
+                { Text(text = uiState.carPost.make )},
                 { Text(text = "Model:") },
-                { Text(text = carPost.model) },
+                { Text(text = uiState.carPost.model) },
                 { Text(text = "Car Number:") },
-                { Text(text = carPost.dayPrice.toString())},
+                { Text(text = uiState.carPost.dayPrice.toString())},
                 { Text(text = "Location:") },
-                { Text(text = carPost.location) }
+                { Text(text = uiState.carPost.location) }
             )
 
         )
 
-        Spacer(modifier = Modifier.height(4.dp))
+        Spacer(modifier = Modifier.height(20.dp))
 
         CardDetails(
             title = "Client Details",
@@ -63,7 +67,7 @@ fun OrderDetailsScreen(
                 { Text("To :     ${uiState.toDate}") }
             )
         )
-        Spacer(modifier = Modifier.height(4.dp))
+        Spacer(modifier = Modifier.height(20.dp))
 
         CardDetails(
             title = "Payment :",
@@ -74,6 +78,53 @@ fun OrderDetailsScreen(
                 { Text(uiState.paymentMethod) }
             )
         )
+
+        Spacer(modifier = Modifier.height(60.dp))
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.End)
+                .padding(end= 20.dp, start = 20.dp, bottom = 16.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ){
+            Button(
+                onClick = {
+                    shareOrderDetails(context, uiState)
+                },
+                colors = ButtonDefaults.buttonColors(Color(android.graphics.Color.parseColor("#B3261E"))),
+            ) {
+                Text(
+                    text = "Share",
+                    fontSize = 15.sp ,
+                    color = androidx.compose.ui.graphics.Color.White,
+                    fontWeight = FontWeight.Bold,
+                    modifier= Modifier
+                        .padding(end = 8.dp)
+                        .fillMaxWidth(0.25f)
+                        .align(alignment = Alignment.CenterVertically),
+                    textAlign = androidx.compose.ui.text.style.TextAlign.Center
+                )
+            }
+
+            Button(
+                onClick = onDoneButtonClicked
+                ,
+                colors = ButtonDefaults.buttonColors(Color(android.graphics.Color.parseColor("#B3261E"))),
+            ) {
+                Text(
+                    text = "Done",
+                    fontSize = 15.sp ,
+                    color = androidx.compose.ui.graphics.Color.White,
+                    fontWeight = FontWeight.Bold,
+                    modifier= Modifier
+                        .fillMaxWidth(0.5f)
+                        .padding(start = 8.dp)
+                        .align(alignment = Alignment.CenterVertically),
+                    textAlign = androidx.compose.ui.text.style.TextAlign.Center
+                )
+            }
+        }
 
 
     }

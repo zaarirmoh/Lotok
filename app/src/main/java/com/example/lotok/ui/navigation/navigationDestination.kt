@@ -1,6 +1,7 @@
 package com.example.lotok.ui.navigation
 
 import android.annotation.SuppressLint
+import android.content.Context
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -8,6 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -16,6 +18,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.lotok.model.Data
 import com.example.lotok.model.profileInformation
 import com.example.lotok.ui.components.navigationBar.MyNavigationBar
+import com.example.lotok.ui.screens.addPostScreen.AddPostScreen
 import com.example.lotok.ui.screens.bookingScreen.BookingScreen
 import com.example.lotok.ui.screens.bookingScreen.BookingSharedViewModel
 import com.example.lotok.ui.screens.carDetailsScreen.CarDetailsScreen
@@ -56,6 +59,7 @@ fun LotokNavHost(
     )
 
     val bookingSharedViewModel = BookingSharedViewModel()
+    val context : Context = LocalContext.current
 
 
 
@@ -74,7 +78,7 @@ fun LotokNavHost(
         val uiState by bookingSharedViewModel.uiState.collectAsState()
         NavHost(
             navController = navController,
-            startDestination = LotokScreen.BookingScreen.name, /*if (showWelcomeScreen) LotokScreen.HomeScreen.name else LotokScreen.WelcomeScreen.name,*/
+            startDestination = LotokScreen.AddPostScreen.name, /*if (showWelcomeScreen) LotokScreen.HomeScreen.name else LotokScreen.WelcomeScreen.name,*/
             modifier = modifier
         ) {
             composable(route = LotokScreen.WelcomeScreen.name){
@@ -229,8 +233,19 @@ fun LotokNavHost(
                 )
             }
             composable(route = LotokScreen.OrderDetailsScreen.name){
-
-                OrderDetailsScreen(uiState = uiState, carPost =  Data.carPostsList[0])
+                OrderDetailsScreen(
+                    uiState = uiState ,
+                    context = context,
+                    onDoneButtonClicked = {
+                        navController.navigate(LotokScreen.HomeScreen.name)
+                    }
+                )
+            }
+            
+            composable(route = LotokScreen.AddPostScreen.name){
+                AddPostScreen(onGoBackIconClicked = { }) {
+                    
+                }
             }
         }
     }
